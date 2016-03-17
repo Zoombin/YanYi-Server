@@ -1,0 +1,23 @@
+{% include "./lib/header.html" %}
+{% include "./lib/topbar.html" %}
+
+<div class="container-fluid"  style="padding-top:100px;">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- <legend></legend> -->
+            {% if error_msg %}<div class="alert alert-danger">{$error_msg$}</div>{% endif %}
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div class="col-xs-2">
+        </div>
+        <div class="col-xs-10">
+            <h3>Home Page</h3>
+        </div>
+    </div>
+
+</div>
+
+{% include "./lib/footer.html" %}

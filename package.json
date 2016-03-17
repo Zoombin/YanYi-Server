@@ -1,0 +1,20 @@
+{
+  "name": "YanYi-Web",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~3.4.7",
+    "moment": "^2.10.6",
+    "mysql": "^2.10.2",
+    "swig": "^1.4.2"
+  },
+  "description": "YanYi-Web",
+  "license": "All Rights Reserved.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zoombin/YanYi-Web.git"
+  }
+}
