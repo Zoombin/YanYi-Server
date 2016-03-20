@@ -1,0 +1,58 @@
+body{
+    font-family:"Microsoft YaHei","Hiragino Sans GB",sans-serif;
+}
+
+/*top navbar start*/
+.navbar{
+    border: none;
+}
+.navbar .divider{
+    color: #e5e5e5;
+}
+.navbar .container-fluid{
+    width: 1050px;
+    padding: 0;
+}
+.navbar .navbar-subtitle{
+    color: #979797;
+}
+.navbar-inverse{
+    background-color: #333;
+}
+.navbar-inverse .navbar-text, .navbar-inverse .navbar-nav>li>a{
+    color: white;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+    border-bottom: 2px solid #f7961d;
+    background-color: #333;
+}
+.navbar-brand {
+    padding: 0;
+    padding-top: 3px;
+    padding-left: 7px;
+}
+.navbar-text{
+    margin-left: 0px;
+}
+/*top navbar end*/
+
+/*banner start*/
+.carousel-indicators li{
+    background-color: #979797;
+    border:none;
+}
+.carousel-indicators .active{
+    background-color: #f7961d;
+}
+/*banner end*/
+
+/*main page start*/
+.mainpage{
+    padding-top:52px;
+}
+.mainpage .container-fluid{
+    width: 1050px;
+    padding: 0;
+}
+
+/*main page end

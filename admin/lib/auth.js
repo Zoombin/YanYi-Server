@@ -1,11 +1,23 @@
+var mysql = require('../../config/mysql');
+
 exports.requiresLogin = function (req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
+    var username, password;
+    if(typeof res.locals.user != 'undefined' && res.locals.user){
+        username = res.locals.user.user_name || '';
+        password = res.locals.user.password || '';
     }
-    if (req.method === 'GET') {
-        req.session.returnTo = req.originalUrl;
-    }
-    res.redirect('/admin/login');
+    var sql = "SELECT * FROM `admin_user` WHERE user_name='"+username+"' AND `password`='"+password+"'";
+    mysql.query(sql, function(result){
+        if(result.data.length){
+            return next();
+        }else{
+            if (req.method === 'GET') {
+                req.session.returnTo = req.originalUrl;
+            }
+            res.redirect('/admin/login');
+        }
+    });
+    
 };
 
 exports.needGroup = function(group) {

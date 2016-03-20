@@ -7,7 +7,6 @@ var config = require('./config');
 module.exports = function(app, passport) {
 
     app.use(function(req, res, next) {
-        // console.log('Request: ', req.originalUrl);
         res.locals.cdn = config.cdn;
         next();
     });
@@ -18,19 +17,16 @@ module.exports = function(app, passport) {
     });
 
     // // admin pages
-    // var admin = require('../admin/admin.server');
-    // app.get('/admin/login', function(req, res){
-    //     // console.log(req.user);
-    //     res.render('admin/login');
-    // });
-    // app.get('/admin/logout', admin.logout);
-    // app.get('/admin', auth.requiresLogin, function(req, res){
-    //     res.render('admin/index');
-    // });
+    var admin = require('../admin/admin.server');
+    app.get('/admin/login', function(req, res){
+        res.render('admin/login');
+    });
+    app.get('/admin/logout', admin.logout);
+    app.get('/admin', auth.requiresLogin, function(req, res){
+        res.render('admin/index');
+    });
 
-    // // grab pages
-    // app.get('/admin/postdata',function(req, res){
-    //     res.render('admin/grab/postdata');
-    // }); 
+    // admin API
+    app.post('/admin/login', admin.login);
     
 };

@@ -20,7 +20,11 @@ module.exports = function (app) {
     app.disable('x-powered-by');
 
     app.use(function(req, res, next) {
-        res.locals.user = req.user;
+        res.locals.user = req.session.user;
+        var err = req.session.error_msg;
+        delete req.session.error_msg;
+        res.locals.error_msg = '';
+        if(err) res.locals.error_msg = err;
         next();
     });
 };
