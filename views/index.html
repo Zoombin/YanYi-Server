@@ -1,24 +1,36 @@
 {% include "./lib/header.html" %}
 {% include "./lib/topbar.html" %}
 
-<div class="container-fluid" style="padding:0;">
-    <div class="row"  style="margin:0;">
-        <div class="col-xs-12"  style="padding:0;">
-            {% include "./lib/banner.html" %}
+<div class="banner">
+    <div class="container-fluid" style="padding:0;">
+        <div class="row" style="margin:0;">
+            <div class="col-xs-12"  style="padding:0;">
+                {% include "./lib/banner.html" %}
+            </div>
         </div>
     </div>
 </div>
 
 <div class="mainpage">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <h3>精品课程</h3>
-            </div>
-        </div>
-
+        <h3>精品课程</h3>
+        <div class="grayline"></div>
     </div>
-    
+</div>
+<div class="course">
+    {% include "./lib/course.html" %}
+</div>
+
+<div class="mainpage">
+    <div class="container-fluid">
+        <div class="grayline linemargin"></div>
+    </div>
+</div>
+
+<div class="mainpage">
+    <div class="container-fluid">
+        <h3>我们的服务</h3>
+    </div>
 </div>
 
 {% include "./lib/footer.html" %}
