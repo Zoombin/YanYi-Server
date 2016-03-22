@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="mainpage">
+<div class="box">
     <div class="container-fluid">
         <h3>精品课程</h3>
         <div class="grayline"></div>
@@ -21,15 +21,47 @@
     {% include "./lib/course.html" %}
 </div>
 
-<div class="mainpage">
+<div class="box">
     <div class="container-fluid">
         <div class="grayline linemargin"></div>
     </div>
 </div>
 
-<div class="mainpage">
+<!-- 服务 -->
+<div class="box">
     <div class="container-fluid">
         <h3>我们的服务</h3>
+    </div>
+</div>
+<div class="box">
+    <div class="container-fluid">
+        <div class="service">
+            {% include "./lib/service.html" %}
+        </div>
+    </div>
+</div>
+
+<!-- 需求留言 -->
+<div class="box">
+    <div class="container-fluid">
+        <div class="msg">
+            {% include "./lib/msg.html" %}
+        </div>
+    </div>
+</div>
+
+<!-- 视频 -->
+<div class="video">
+    <div class="box">
+        <div class="container-fluid">
+            <h3>言易视频</h3>
+            <div class="grayline"></div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="container-fluid">
+            {% include "./lib/video.html" %}
+        </div>
     </div>
 </div>
 

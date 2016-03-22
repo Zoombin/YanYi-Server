@@ -1,5 +1,8 @@
 body{
-    font-family:"Microsoft YaHei","Hiragino Sans GB",sans-serif;
+    font-family:"Microsoft YaHei","Hiragino Sans GB",Arial,sans-serif;
+}
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    padding: 0;
 }
 .grayline{
     height: 1px;
@@ -57,17 +60,19 @@ body{
 }
 /*banner end*/
 
-/*main page start*/
-.mainpage{
+/*box start*/
+.box{
     padding-top:10px;
 }
-.course{
-    width: 1115px;
-    margin: 0 auto;
-}
-.mainpage .container-fluid, .course .courselist .bd{
+.box .container-fluid, .course .courselist .bd{
     width: 1050px;
     padding: 0;
+}
+/*box end*/
+
+.course{
+    width: 1145px;
+    margin: 0 auto;
 }
 
 .course .courselist .bd{
@@ -84,19 +89,15 @@ body{
     width: 26px;
     height: 59px;
     float: left;
-    /*overflow: hidden;*/
     cursor: pointer;
     background: url("/images/previous.png") no-repeat;
-    /*position: absolute;*/
-    margin:80px 5px 0px 0px;
-    /*margin-top: 80px;*/
-    /*margin-right: -50px; */
+    margin:80px 20px 0px 0px;
 }
 
 .courselist .next {
     background: url("/images/next.png") no-repeat;
     position: absolute;
-    margin:80px 0px 0px 1084px;
+    margin:80px 0px 0px 1116px;
 }
 .courselist .bd{ 
     margin:auto;   
@@ -134,4 +135,45 @@ body{
     font-size: 16px;
 }
 
-/*main page end
+/*service start*/
+.service{
+}
+.service .service_title{
+    font-family: "Open Sans Light";
+    color: #ce7540;
+    font-size: 24px;
+}
+.service .service_list,.service .service_text{
+    margin-top: 10px;
+}
+.service .service_list{
+    -webkit-padding-start : 20px;
+}
+/*service end*/
+
+/*msg start*/
+.msg .msg_btn{
+    margin-top: 50px;
+    color: white;
+    background-color: #FF8E00;
+    padding: 6px 22px;
+    font-size: 14px;
+    display: inline-block;
+    line-height: 1.5;
+    cursor: pointer;
+    border-radius: 2px;
+    background-image: none;
+    margin-bottom: 0;
+    border:none;
+}
+/*msg end*/
+
+/*video start*/
+.video{
+    margin-top: 40px;
+    background-color: #F6F5F4;
+}
+.video .videobox{
+    height: 340px;
+}
+/*video end*/
