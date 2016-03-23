@@ -9,6 +9,10 @@ body{
     background-color: #e6e6e6;
     width: 100%;
 }
+.grayline_dash{
+    height: 0;
+    border-bottom: 1px dashed #e6e6e6;
+}
 .linemargin{
     margin: 10px auto;
 }
@@ -174,6 +178,162 @@ body{
     background-color: #F6F5F4;
 }
 .video .videobox{
-    height: 340px;
+    margin-bottom: 20px;
+}
+.video .videobox a{
+    text-decoration: none;
+}
+.video .videobox .img_big{
+    width: 97%;
+    height: 379px;
+}
+.video .videobox .img_mid{
+    width: 97%;
+    height: 158px;
+}
+.video .videobox .img_small{
+    width: 97%;
+    height: 65px;
+}
+.video .videobox .video_title{
+    color: black;
+    margin-bottom: 5px;
+}
+.video .videobox .video_text{
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.video .videobox .videolistbox{
+    margin-bottom: 8px;
 }
 /*video end*/
+
+/*honour start*/
+.honour{
+    width: 1145px;
+    margin: 0 auto;
+}
+.honour .honourlist .honourbox{
+    width: 500px;
+    
+}
+.honour .honourlist .honourbox .honourboxsingle{
+    margin-bottom: 10px;
+    width: 490px;
+    height: 150px;
+    background-color: white;
+    border: 1px solid #e6e6e6;
+}
+.honour .honourlist .honourbox .honourboxsingle .honour_img{
+    width: 148px;
+    height: 148px;
+    border-right: 1px solid #e6e6e6;
+}
+.honour .honourlist .honourbox .honourboxsingle img{
+    width: 100%;
+    height: 100%;
+}
+.honour .honourlist .honourbox .honourboxsingle .honour_intro{
+    width: 340px;
+    height: 148px;
+    padding: 5px 10px;
+}
+.honour .honourlist .honourbox .honourboxsingle .honour_intro .honour_title{
+    color: #ce7540;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    margin: 10px 0px;
+}
+.honour .honourlist .honourbox .honourboxsingle .honour_intro .honour_text{
+    text-align: left;
+    font-size: 12px;
+}
+.honour .honourlist .bd{
+    float: left;
+}
+.honourlist {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-top: 10px;
+}
+.honourlist .prev,.honourlist .next {
+    display: block;
+    width: 26px;
+    height: 59px;
+    float: left;
+    cursor: pointer;
+    background: url("/images/previous.png") no-repeat;
+    margin:145px 20px 0px 0px;
+}
+
+.honourlist .next {
+    background: url("/images/next.png") no-repeat;
+    position: absolute;
+    margin:145px 0px 0px 1070px;
+}
+.honourlist .bd{ 
+    margin:auto;   
+}
+.honourlist .bd ul {
+    overflow: hidden;
+    zoom: 1;
+}
+.honourlist .bd ul li {
+    margin-right: 15px;
+    float: left;
+    _display: inline;
+    overflow: hidden;
+    text-align: center;
+}
+/*honour end*/
+
+/*activity start*/
+.activity{
+    margin-top: 20px;
+}
+.activity .activitybox{
+    margin-bottom: 10px;
+}
+.activity .activitybox .activity_img img{
+    width: 100%;
+    height: 80px;
+}
+.activity .activitybox .activity_intro{
+    padding: 0 10px;
+}
+.activity .activitybox .activity_intro .activity_title{
+    font-weight: bold;
+    margin-top: 10px;
+}
+.activity .activitybox .activity_intro .activity_title a{
+    color: black;
+    text-decoration: none;
+}
+.activity .activitybox .activity_intro .activity_date{
+    font-size: 12px;
+    margin: 5px 0;
+}
+.activity .activitybox .activity_intro .activity_ongoing{
+    color: green;
+}
+.activity .activitybox .activity_intro .activity_done{
+    color: red;
+}
+
+.activity .activitylistbox {
+    margin-top: 20px;
+}
+.activity .activitylistbox .activity_list{
+    -webkit-padding-start : 20px;
+}
+.activity .activitylistbox .activity_list li{
+    margin-bottom: 10px;
+}
+.activity .activitylistbox .activity_list li a{
+    text-decoration: none;
+    color: black;
+}
+/*activity end*/

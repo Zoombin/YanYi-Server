@@ -11,6 +11,7 @@
     </div>
 </div>
 
+<!-- 精品课程 -->
 <div class="box">
     <div class="container-fluid">
         <h3>精品课程</h3>
@@ -63,6 +64,33 @@
             {% include "./lib/video.html" %}
         </div>
     </div>
+
+    <!-- 荣誉清单 -->
+    <div class="box">
+        <div class="container-fluid">
+            <div class="grayline"></div>
+            <h3>荣誉清单</h3>
+        </div>
+    </div>
+    <div class="honour">
+        {% include "./lib/honour.html" %}
+    </div>
 </div>
+
+<!-- 精彩活动 -->
+<div class="box">
+    <div class="container-fluid">
+        <h3>精彩活动</h3>
+        <div class="grayline"></div>
+    </div>
+</div>
+<div class="box">
+    <div class="container-fluid">
+        <div class="activity">
+            {% include "./lib/activity.html" %}
+        </div>
+    </div>
+</div>
+
 
 {% include "./lib/footer.html" %}
