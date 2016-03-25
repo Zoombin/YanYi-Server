@@ -16,6 +16,9 @@ body{
 .linemargin{
     margin: 10px auto;
 }
+.clearboth{
+    clear: both;
+}
 
 /*top navbar start*/
 .navbar{
@@ -216,7 +219,6 @@ body{
 }
 .honour .honourlist .honourbox{
     width: 500px;
-    
 }
 .honour .honourlist .honourbox .honourboxsingle{
     margin-bottom: 10px;
@@ -337,3 +339,128 @@ body{
     color: black;
 }
 /*activity end*/
+
+/*lectuer start*/
+.lectuer{
+    width: 1145px;
+    margin: 0 auto;
+}
+.lectuer .lectuerlist .bd{
+    float: left;
+}
+.lectuerlist {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-top: 10px;
+}
+.lectuerlist .prev,.lectuerlist .next {
+    display: block;
+    width: 26px;
+    height: 59px;
+    float: left;
+    cursor: pointer;
+    background: url("/images/previous.png") no-repeat;
+    margin:170px 20px 0px 0px;
+}
+
+.lectuerlist .next {
+    background: url("/images/next.png") no-repeat;
+    position: absolute;
+    margin:170px 0px 0px 1116px;
+}
+.lectuerlist .bd{ 
+    margin:auto;   
+}
+.lectuerlist .bd ul {
+    overflow: hidden;
+    zoom: 1;
+}
+.lectuerlist .bd ul li {
+    margin-right: 15px;
+    float: left;
+    _display: inline;
+    overflow: hidden;
+    text-align: center;
+}
+.lectuerlist .bd ul li .pic {
+    text-align: center;
+}
+.lectuerlist .bd ul li .pic img {
+    width: 250px;
+    height: 367px;
+    display: block;
+    padding: 2px;
+}
+.lectuerlist .bd ul li .pic a:hover img {
+    border-color: #999;
+}
+/*lectuer end*/
+
+/*company brief start*/
+.companybrief{
+    margin-top: 40px;
+    background-color: #F6F5F4;
+    line-height: 2;
+}
+.companybrief .companybriefbox{
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.companybrief .companybriefbox .company_image{
+    margin-bottom: 20px;
+}
+.companybrief .companybriefbox .company_image img{
+    width: 100%;
+}
+.companybrief .companybriefbox .company_intro{
+    margin-bottom: 20px;
+}
+.companybrief .companybriefbox .company_contact{
+    margin-bottom: 20px;
+}
+.companybrief .companybriefbox .company_address{
+    margin-bottom: 20px;
+}
+/*company brief end*/
+
+/*join us start*/
+.joinus{
+    margin-bottom: 40px;
+    padding-top: 10px;
+}
+/*join us end*/
+
+/*footer start*/
+.footer{
+    background-color: #333;
+    color: #979797;
+}
+.footer .footer_content{
+    width: 1050px;
+    height: 250px;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+}
+.footer .footer_content a{
+    text-decoration: none;
+}
+.footer .footer_content .footer_title{
+
+}
+.footer .footer_content .footer_text{
+    margin-top: 20px;
+}
+.footer .footer_content .footer_text a{
+    color: #979797;
+}
+.footer .footer_content .footer_wechat{
+
+}
+.footer .footer_content .footer_wechat img{
+    /*width: 120px;
+    height: 120px;*/
+}
+/*footer end*/
