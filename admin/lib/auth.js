@@ -6,8 +6,8 @@ exports.requiresLogin = function (req, res, next) {
         username = res.locals.user.user_name || '';
         password = res.locals.user.password || '';
     }
-    var sql = "SELECT * FROM `admin_user` WHERE user_name='"+username+"' AND `password`='"+password+"'";
-    mysql.query(sql, function(result){
+    var sql = "SELECT * FROM `admin_user` WHERE user_name=? AND `password`=?";
+    mysql.query(sql, [username, password], function(result){
         if(result.data.length){
             return next();
         }else{

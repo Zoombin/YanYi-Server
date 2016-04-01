@@ -4,8 +4,8 @@ var mysql = require('../../config/mysql');
 exports.login = function (req, res, next) {
     var username = req.param('username');
     var password = req.param('password');
-    var sql = "SELECT * FROM `admin_user` WHERE user_name='"+username+"' AND `password`='"+password+"'";
-    mysql.query(sql, function(result){
+    var sql = "SELECT * FROM `admin_user` WHERE user_name=? AND `password`=?";
+    mysql.query(sql, [username, password], function(result){
         if(result.data.length){
             req.session.user = result.data[0];
             res.redirect('/admin');

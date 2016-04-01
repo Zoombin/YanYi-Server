@@ -17,7 +17,7 @@ if(pool == null){
     pool  = mysql.createPool(db_config);
 }
 
-exports.query = function(sql, cb){
+exports.query = function(sql, param, cb){
     pool.getConnection(function(err, con){
         if(err){
             result.error = 1;
