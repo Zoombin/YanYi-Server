@@ -23,7 +23,11 @@ exports.query = function(sql, param, cb){
             result.error = 1;
             result.msg = err;
         }
-        con.query(sql, function(err, rows, fields){
+        con.query(sql, param, function(err, rows, fields){
+            if(err){
+              result.error = 1;
+              result.msg = err.message;
+            }
             result.data = rows;
             // result.fields = fields;
             con.release();
