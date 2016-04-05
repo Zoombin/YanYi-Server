@@ -1,0 +1,50 @@
+<!-- 基本配置 -->
+<div id="basic" class="tab-pane fade in active">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>
+                基本配置
+                <button class="btn btn-primary pull-right margint5m">编辑</button>
+            </h4>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="site_title_label" class="col-xs-2 control-label">网站标题</label>
+                <div class="col-xs-10">
+                  <p id="site_title_label" class="form-control-static"></p>
+                </div>
+              </div>
+              
+            </form>
+        </div>
+       
+    </div>
+</div>
+
+<!-- 编辑 -->
+<div class="modal fade" id="basic_modal_add" tabindex="-1" role="dialog" aria-labelledby="website_modal_addLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="basic_modal_addLabel"><!-- 添加/编辑 --></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="site_title" class="col-sm-2 control-label">网站标题</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="site_title" placeholder="网站标题">
+                </div>
+            </div>
+            
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="basic_save">保存</button>
+      </div>
+    </div>
+  </div>
+</div>

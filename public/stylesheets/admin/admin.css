@@ -1,0 +1,18 @@
+.margin0 {
+    margin: 0;
+}
+
+.marginlr0 {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.margintb0 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/*top 5 minus*/
+.margint5m {
+    margin-top: -5px;
+}

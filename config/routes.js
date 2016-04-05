@@ -29,4 +29,7 @@ module.exports = function(app, passport) {
     // admin API
     app.post('/admin/login', admin.login);
     
+    // admin basic
+    app.get('/admin/basic/getall', admin.basic_getall);
+    app.post('/admin/basic/update', admin.basic_update);
 };

@@ -1,4 +1,3 @@
-var config = require('../../config/config');
 var mysql = require('../../config/mysql');
 
 exports.login = function (req, res, next) {

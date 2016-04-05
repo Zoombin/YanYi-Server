@@ -12,10 +12,21 @@
 
     <div class="row">
         <div class="col-xs-2">
-            {% include "./lib/sidemenu.html" %}
+            <ul class="nav nav-pills nav-stacked" role="tablist">
+                <li role="presentation" class="disabled"><a href="javascript:void(0);">网站管理</a></li>
+                <li role="presentation" class="active"><a href="#basic" data-toggle="pill">基本配置</a></li>
+                <!-- <li role="presentation"><a href="#banner" data-toggle="pill">首页BANNER</a></li> -->
+                <li role="presentation"><a href="#course" data-toggle="pill">课程列表</a></li>
+                <li role="presentation"><a href="#test" data-toggle="pill">活动发布</a></li>
+                <li role="presentation"><a href="#test" data-toggle="pill">留言</a></li>
+            </ul>
         </div>
         <div class="col-xs-10">
-            {% include "./lib/sidemenu_content.html" %}
+            <div class="tab-content">
+                {% include "./lib/basic.html" %}
+                <!-- {% include "./lib/banner.html" %} -->
+                {% include "./lib/course.html" %}
+            </div>
         </div>
     </div>
 

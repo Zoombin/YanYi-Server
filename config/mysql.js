@@ -1,6 +1,6 @@
 var config = require('./config');
 var mysql  = require('mysql');
-var result = {error:0, msg:'',data:'', fields:''};
+var result = {error:0, msg:'操作成功',data:''};
 
 // get mysql connection
 var db_config = {
