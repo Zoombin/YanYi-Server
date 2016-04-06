@@ -32,4 +32,7 @@ module.exports = function(app, passport) {
     // admin basic
     app.get('/admin/basic/getall', admin.basic_getall);
     app.post('/admin/basic/update', admin.basic_update);
+
+    // admin course
+    app.get('/admin/course/getall', admin.course_getall);
 };

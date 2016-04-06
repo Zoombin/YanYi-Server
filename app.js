@@ -11,6 +11,9 @@ require('./config/express')(app);
 // Bootstrap routes
 require('./config/routes')(app);
 
+// ueditor
+require('./config/ueditor')(app);
+
 
 app.listen(config.Port, function() {
     console.log('Listening on port %d', config.Port);

@@ -5,3 +5,6 @@ exports.logout = require('./api/admin_user').logout;
 // admin basic
 exports.basic_getall = require('./api/basic').getall;
 exports.basic_update = require('./api/basic').update;
+
+// admin course
+exports.course_getall = require('./api/course').getall;

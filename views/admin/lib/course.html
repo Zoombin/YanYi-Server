@@ -1,23 +1,55 @@
-<!-- 课程发布 -->
-<div id="course" class="tab-pane fade in active">
+<!-- 课程列表 -->
+<div id="course" class="tab-pane fade">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4>
-                基本配置
-                <button class="btn btn-primary pull-right margint5m">编辑</button>
+                课程列表
+                <button class="btn btn-primary pull-right margint5m">添加</button>
             </h4>
         </div>
-        <div class="panel-body">
-            <form class="form-horizontal">
-              <div class="form-group">
-                <label for="site_title_label" class="col-xs-2 control-label">网站标题</label>
-                <div class="col-xs-10">
-                  <p id="site_title_label" class="form-control-static"></p>
-                </div>
-              </div>
-              
-            </form>
+        <div id="course-list"></div>
+        <div class="text-center">
+          <ul id="course-pager" class="pagination pull-right"></ul>
         </div>
        
     </div>
+</div>
+
+<!-- 课程列表 modal -->
+<div class="modal fade" id="course_modal_add" tabindex="-1" role="dialog" aria-labelledby="course_modal_addLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="course_modal_addLabel"><!-- 添加/编辑 --></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">课程名称</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="title" placeholder="课程名称">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cover_url" class="col-sm-2 control-label">封面图片</label>
+                <div class="col-sm-10">
+                  <input type="file" id="cover_url">
+                  <p class="help-block">.png .jpg .jpeg .gif .bmp</p>
+                </div>
+            </div>
+            <div class="form-group editor_div">
+                <label for="cover_url" class="col-sm-2 control-label">内容</label>
+                <div class="col-sm-10">
+                    <script id="course_editor" type="text/plain" class="editor_basic"></script>
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="course_save">保存</button>
+      </div>
+    </div>
+  </div>
 </div>

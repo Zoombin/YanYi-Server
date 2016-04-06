@@ -16,3 +16,19 @@
 .margint5m {
     margin-top: -5px;
 }
+
+#course .cover_img{
+    width:120px;
+}
+
+.editor_div{
+    height: 235px;
+}
+.editor_basic{
+    height: 200px;
+    /*z-index: 2199;*/
+}
+
+#edui_fixedlayer{
+    /*z-index: 2000 !important;*/
+}
