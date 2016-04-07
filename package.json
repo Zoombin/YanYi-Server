@@ -6,6 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "body-parser": "^1.15.0",
     "express": "~3.4.7",
     "moment": "^2.10.6",
     "mysql": "^2.10.2",

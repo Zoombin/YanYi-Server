@@ -24,24 +24,24 @@
         <h4 class="modal-title" id="course_modal_addLabel"><!-- 添加/编辑 --></h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal">
+        <form id="course_form" class="form-horizontal">
             <div class="form-group">
                 <label for="title" class="col-sm-2 control-label">课程名称</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="title" placeholder="课程名称">
+                  <input type="text" class="form-control" id="course_title" name="title" placeholder="课程名称">
                 </div>
             </div>
             <div class="form-group">
                 <label for="cover_url" class="col-sm-2 control-label">封面图片</label>
                 <div class="col-sm-10">
-                  <input type="file" id="cover_url">
+                  <input type="file" id="course_cover_url" name="cover_url">
                   <p class="help-block">.png .jpg .jpeg .gif .bmp</p>
                 </div>
             </div>
             <div class="form-group editor_div">
                 <label for="cover_url" class="col-sm-2 control-label">内容</label>
                 <div class="col-sm-10">
-                    <script id="course_editor" type="text/plain" class="editor_basic"></script>
+                    <script id="course_content" name="content" type="text/plain" class="editor_basic"></script>
                 </div>
             </div>
         </form>

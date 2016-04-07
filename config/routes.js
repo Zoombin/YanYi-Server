@@ -35,4 +35,6 @@ module.exports = function(app, passport) {
 
     // admin course
     app.get('/admin/course/getall', admin.course_getall);
+    app.post('/admin/course/add', admin.course_add);
+    // app.all('/admin/course/ue', admin.course_ue);
 };

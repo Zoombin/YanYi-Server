@@ -8,3 +8,5 @@ exports.basic_update = require('./api/basic').update;
 
 // admin course
 exports.course_getall = require('./api/course').getall;
+exports.course_add = require('./api/course').add;
+exports.course_ue = require('./api/course').ue;

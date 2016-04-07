@@ -1,27 +1,44 @@
+var ueContent;
 // show add modal when lick
 $('#course > div > div > h4 > button').click(function(){
     $('#course_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#course_modal_addLabel').html('添加课程');
-    $('#course_title').val($('#site_title_label').html());
+    // $('#course_title').val($('#site_title_label').html());
 });
 $('#course_modal_add').on('shown.bs.modal', function(){
-    var ue = UE.getEditor('course_editor');
-    $('#site_title').focus();
+    // init rich text editor
+    ueContent = UE.getEditor('course_content', {
+        serverUrl: '/admin/course/ue'
+    });
+    $('#course_title').focus();
 });
 
 // add course info
 $('#course_save').click(function(e){
-    var sSiteTitle = $('#site_title').val().trim();
-    if(!sSiteTitle) {
-        $.bstip('请输入网站标题', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
+    var sTitle = $('#course_title').val().trim();
+    var sUrl = $('#course_cover_url').val();
+    var sContent = ueContent.getContent();
+    console.log(sUrl);
+    console.log(sContent);
+    if(!sTitle) {
+        $.bstip('请输入课程名称', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
     }
-    $('#course_modal_add button').attr('disabled', 'disabled');
-    $.ajax({
-        type : 'POST',
+    if(!sUrl) {
+        $.bstip('请上传课程封面', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
+        return false;
+    }
+    if(!sContent) {
+        $.bstip('请输入课程内容', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
+        return false;
+    }
+    // $('#course_modal_add button').attr('disabled', 'disabled');
+    $('#course_form').ajaxSubmit({
         url: '/admin/course/add',
-        data: {site_title: sSiteTitle},
+        type: 'post',
         success: function(res) {
+            console.log('res');
+            console.log(res);
             $.bstip(res.msg, {type: 'success'});
             getall();
             $('#course_modal_add button').removeAttr('disabled');
