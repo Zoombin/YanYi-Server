@@ -37,6 +37,7 @@ var _basic = function(req, res, next, save_url){
     if(req.query.action === 'uploadimage'){
         var foo = req.ueditor;
         var imgname = foo.filename;
+        // console.log(foo);
 
         var img_url = save_url;
         res.ue_up(img_url); //你只要输入要保存的地址 。保存操作交给ueditor来做

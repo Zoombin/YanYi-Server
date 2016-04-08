@@ -16,7 +16,7 @@ module.exports = function (app) {
     app.use(express.cookieParser())
     app.use(express.session({secret: pkg.name, cookie: { maxAge: 15*60*1000 }}));
     app.use(express.bodyParser());
-    // app.use(express.bodyParser({ keepExtensions: true, uploadDir: '/my/files' }));
+    // app.use(express.bodyParser({ keepExtensions: true, uploadDir: './upload_tmp' }));
     // app.use(bodyParser.urlencoded({ extended: true }));
 
     app.disable('x-powered-by');

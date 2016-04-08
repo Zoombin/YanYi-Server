@@ -32,3 +32,7 @@
 #edui_fixedlayer{
     /*z-index: 2000 !important;*/
 }
+
+#course-list > table > tbody > tr > td{
+    vertical-align: middle;
+}
