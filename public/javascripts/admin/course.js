@@ -3,6 +3,8 @@ var ueContent;
 ueContent = UE.getEditor('course_content', {
     serverUrl: '/admin/course/ue'
 });
+// for pagination
+var HISTORYSTART = 1, PAGESIZE = 5;
 
 // show add modal when lick
 $('#course > div > div > h4 > button').click(function(){
@@ -21,9 +23,12 @@ function _clear_form(){
     ueContent.ready(function() {
         ueContent.setContent('');
     });
+    $('#course_cover_image').hide().attr('src','');
+    $('#course_title').attr('data-id', '');
 }
 // add course info
 $('#course_save').click(function(e){
+    var id = $('#course_title').attr('data-id');
     var sTitle = $('#course_title').val().trim();
     var sCoverUrl = $('#course_cover_url').val();
     var sContent = ueContent.getContent();
@@ -31,7 +36,7 @@ $('#course_save').click(function(e){
         $.bstip('请输入课程名称', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
     }
-    if(!sCoverUrl) {
+    if(!sCoverUrl && !id) {
         $.bstip('请上传课程封面', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
     }
@@ -43,9 +48,10 @@ $('#course_save').click(function(e){
     $('#course_form').ajaxSubmit({
         url: '/admin/course/add',
         type: 'post',
+        data:{id:id},
         success: function(res) {
             $.bstip(res.msg, {type: 'success'});
-            getall();
+            getall(HISTORYSTART-1);
             $('#course_modal_add button').removeAttr('disabled');
             $('#course_modal_add').modal('hide');
             _clear_form();
@@ -86,11 +92,10 @@ function _updatecourse(id, oTr){
     var sTitle =  $(oTr).find('td:eq(1)').html();
     var sCoverUrl = $(oTr).find('td:eq(2) img').attr('src');
     var sContent = $(oTr).find('td:eq(3) div').html();
-    console.log(sContent);
     $('#course_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#course_modal_addLabel').html('编辑课程');
-    $('#course_title').val(sTitle);
-    // $('#course_cover_url').val(sCoverUrl);
+    $('#course_title').attr('data-id', id).val(sTitle);
+    $('#course_cover_image').show().attr('src',sCoverUrl);
     ueContent.ready(function() {
         ueContent.setContent(sContent);
     });
@@ -152,15 +157,35 @@ function course_OperatorEvent(){
 }
 
 // get all info
-function getall(){
+function getall(iStart){
+    console.log(iStart);
+    console.log(PAGESIZE);
     $.ajax({
         type : 'GET',
         url: '/admin/course/getall',
+        data: {PAGESIZE: PAGESIZE, START: iStart},
         success: function(res) {
             $('#course-list').empty();
             $('#course-list').append(res.tpl);
             course_updateActiveEvent();
             course_OperatorEvent();
+
+            //add pagination
+            var total_page = Math.ceil(res.totalCount/PAGESIZE) > 1 ? Math.ceil(res.totalCount/PAGESIZE) : 1;
+            var options = {
+                bootstrapMajorVersion: 3,
+                currentPage: HISTORYSTART,//设置当前页
+                totalPages: total_page,//设置总页数
+                alignment: 'right',//设置控件的对齐方式
+                numberOfPages: 5,//设置控件显示的页码数
+                useBootstrapTooltip: true,//设置是否使用Bootstrap内置的tooltip
+                onPageChanged: function(event, oldPage, newPage) {//为操作按钮绑定页码改变事件
+                    // Reload current page with target PageNo
+                    HISTORYSTART =newPage;
+                    getall(newPage-1);
+                }
+            };
+            $('#course-pager').bootstrapPaginator(options);
         },
         error: function(a, b, c) {
             $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000});
@@ -169,5 +194,5 @@ function getall(){
 }
 
 $('a[href="#course"]').on('show.bs.tab', function(){
-    getall();
+    getall(0);
 });

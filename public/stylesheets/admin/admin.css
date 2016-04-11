@@ -17,8 +17,9 @@
     margin-top: -5px;
 }
 
-#course .cover_img{
+#course .cover_img, #course_modal_add .cover_img{
     width:120px;
+    height: 60px;
 }
 
 .editor_div{
