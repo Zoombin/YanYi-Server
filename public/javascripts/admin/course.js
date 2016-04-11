@@ -158,8 +158,6 @@ function course_OperatorEvent(){
 
 // get all info
 function getall(iStart){
-    console.log(iStart);
-    console.log(PAGESIZE);
     $.ajax({
         type : 'GET',
         url: '/admin/course/getall',

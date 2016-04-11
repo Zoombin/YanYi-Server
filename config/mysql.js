@@ -1,6 +1,5 @@
 var config = require('./config');
 var mysql  = require('mysql');
-var result = {error:0, msg:'操作成功',data:''};
 
 // get mysql connection
 var db_config = {
@@ -18,6 +17,7 @@ if(pool == null){
 }
 
 exports.query = function(sql, param, cb){
+    var result = {error:0, msg:'操作成功',data:''};
     pool.getConnection(function(err, con){
         if(err){
             result.error = 1;

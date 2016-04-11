@@ -1,0 +1,21 @@
+<div id="course" class="courselist">
+    <div class="prev"></div>
+    <div class="bd">
+        {% if list.length %}
+            <ul class="picList">
+                {% for item in list %}
+                <li>
+                    <div class="pic"><a href="#" target="_blank"><img src="{$ item.cover_url $}" /></a></div>
+                    <div class="title"><a href="#" target="_blank">{$ item.title $}</a></div>
+                    <div class="content">{$ item.content|safe $}</div>
+                </li>
+                {% endfor%}
+            </ul>
+        {% else %}
+            NO DATA!
+        {% endif %}
+        <div style="clear:both"></div>
+    </div>
+    <div class="next"></div>
+</div>
+

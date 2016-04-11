@@ -11,12 +11,14 @@ module.exports = function(app, passport) {
         next();
     });
 
-    // default index views
-    app.get('/', function(req, res) {
-        res.render('index');
-    });
+    // front end
+    var core = require('../admin/core.server');
+    // init default data
+    app.get('/', core.common);
+    // course
+    app.get('/api/course/getall', core.course_getall);
 
-    // // admin pages
+    // admin pages
     var admin = require('../admin/admin.server');
     app.get('/admin/login', function(req, res){
         res.render('admin/login');
