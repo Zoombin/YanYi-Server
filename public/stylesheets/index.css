@@ -124,8 +124,8 @@ body{
     text-align: center;
 }
 .courselist .bd ul li .pic img {
-    width: 340px;
-    height: 225px;
+    width: 522px;
+    height: 270px;
     display: block;
     padding: 2px;
 }
@@ -137,9 +137,20 @@ body{
 }
 .courselist .bd ul li .title a{
     text-decoration: none;
-    /*font-weight: bold;*/
-    color: black;
+    font-weight: bold;
+    color: #ce7540;
     font-size: 16px;
+}
+.courselist .bd ul li .content {
+    line-height: 24px;
+    width: 522px;
+    text-align: left;
+    height: 72px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 /*service start*/
@@ -163,8 +174,8 @@ body{
     margin-top: 50px;
     color: white;
     background-color: #FF8E00;
-    padding: 6px 22px;
-    font-size: 14px;
+    padding: 6px 30px;
+    font-size: 16px;
     display: inline-block;
     line-height: 1.5;
     cursor: pointer;
@@ -209,6 +220,21 @@ body{
 
 .video .videobox .videolistbox{
     margin-bottom: 8px;
+}
+
+.video .video_list {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.video .video_list .video_ul{
+    -webkit-padding-start : 20px;
+}
+.video .video_list .video_ul li{
+    margin-bottom: 10px;
+}
+.video .video_list .video_ul li a{
+    text-decoration: none;
+    color: black;
 }
 /*video end*/
 
@@ -385,16 +411,50 @@ body{
 }
 .lectuerlist .bd ul li .pic {
     text-align: center;
-}
-.lectuerlist .bd ul li .pic img {
     width: 250px;
     height: 367px;
+}
+.lectuerlist .bd ul li .pic img {
+    width:100%;
+    height:100%;
     display: block;
-    padding: 2px;
+    /*padding: 2px;*/
 }
 .lectuerlist .bd ul li .pic a:hover img {
     border-color: #999;
 }
+.lectuerlist .bd ul li .pic .columntext .columntitle{
+
+}
+.lectuerlist .bd ul li .pic .columntext .columncontent{
+    font-size: 12px;
+    line-height: 24px;
+    height: 72px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.lectuerlist .bd ul li .pic .columntext{
+    bottom:-100%;
+    width:inherit;
+    height:30%;
+    position:absolute;
+    color: white;
+    text-align: left;
+    padding:10px;
+    background:rgba(0,0,0,0.7);
+    z-index:250;
+    -moz-transition:all .3s ease-in-out;
+    -o-transition:all .3s ease-in-out;
+    -webkit-transition:all .3s ease-in-out;
+    transition:all .3s ease-in-out;
+}
+.lectuerlist .bd ul li .pic:hover .columntext{
+    bottom:0;
+}
+
 /*lectuer end*/
 
 /*company brief start*/
@@ -417,12 +477,7 @@ body{
 .companybrief .companybriefbox .company_intro{
     margin-bottom: 20px;
 }
-.companybrief .companybriefbox .company_contact{
-    margin-bottom: 20px;
-}
-.companybrief .companybriefbox .company_address{
-    margin-bottom: 20px;
-}
+
 /*company brief end*/
 
 /*join us start*/
@@ -462,5 +517,14 @@ body{
 .footer .footer_content .footer_wechat img{
     /*width: 120px;
     height: 120px;*/
+}
+.footer .footer_content .company_contact{
+    margin-bottom: 20px;
+}
+.footer .footer_content .company_address{
+    margin-bottom: 20px;
+}
+.footer .footer_content .compantycontact_text{
+    line-height: 28px;
 }
 /*footer end*/
