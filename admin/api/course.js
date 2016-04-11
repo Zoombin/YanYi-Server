@@ -7,8 +7,10 @@ var aRes = {error:0, msg:'',data:Array()};
 
 var image_type = Array('.jpg', '.bmg', '.png', '.gif');
 
+// 分页!!!!!!!!!!!!!!!!!!!!!!!
+// TODO...
 exports.getall = function (req, res, next) {
-    var sql = "SELECT id,title,cover_url,content,created_date FROM `admin_course` ORDER BY id DESC";
+    var sql = "SELECT id,title,is_active,cover_url,content,created_date FROM `admin_course` ORDER BY id DESC";
     mysql.query(sql, [], function(result){
         var tpl = swig.renderFile('views/admin/segment/course.html', {list: result.data});
         result.tpl = tpl;
@@ -96,4 +98,33 @@ exports.add = function(req, res, next){
     //     return res.send(result);
     // });
     
+}
+
+exports.active = function(req, res, next){
+    var id = req.param('id');
+    var is_active = req.param('is_active');
+    var sql = 'UPDATE admin_course SET is_active=?,updated_date=NOW() WHERE id=?';
+    mysql.query(sql, [is_active,id], function(result){
+        return res.send(result);
+    });
+}
+
+exports.remove = function(req, res, next){
+    var id = req.param('id');
+    // unlink image
+    var sql = "SELECT id,title,is_active,cover_url,content,created_date FROM `admin_course` WHERE id=?";
+    mysql.query(sql, [id], function(result){
+        var cover_url = result.data[0].cover_url;
+        var file_path = config.clientRoot+cover_url;
+        if(cover_url){
+            if(fs.existsSync(file_path)){
+                fs.unlinkSync(file_path);
+            }
+        }
+        // delete record
+        var sql = 'DELETE FROM admin_course WHERE id=?';
+        mysql.query(sql, [id], function(result){
+            return res.send(result);
+        });
+    });
 }
