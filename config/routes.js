@@ -45,4 +45,10 @@ module.exports = function(app, passport) {
     app.post('/admin/course/add', admin.course_add);
     app.post('/admin/course/active', admin.course_active);
     app.post('/admin/course/remove', admin.course_remove);
+
+    // admin video
+    app.get('/admin/video/getall', admin.video_getall);
+    app.post('/admin/video/add', admin.video_add);
+    app.post('/admin/video/active', admin.video_active);
+    app.post('/admin/video/remove', admin.video_remove);
 };
