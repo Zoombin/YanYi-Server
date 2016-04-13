@@ -13,10 +13,15 @@ module.exports = function(app, passport) {
 
     // front end
     var core = require('../admin/core.server');
+
     // init default data
     app.get('/', core.common);
+
     // course
     app.get('/api/course/getall', core.course_getall);
+    app.get('/course/:id?', core.course_renderone);
+
+
 
     // admin pages
     var admin = require('../admin/admin.server');

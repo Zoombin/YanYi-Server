@@ -21,3 +21,15 @@ exports.getall = function (req, res, next) {
         });
     });
 };
+
+// 渲染 课程详情页面
+exports.renderone = function(req, res, next){
+    var oData = [];
+    var id = req.param('id');
+    var sql = "SELECT id,title,is_active,cover_url,content,created_date FROM `admin_course` WHERE id=?";
+
+    mysql.query(sql, [id], function(result){
+        oData.content = result.data[0].content;
+         res.render('content', oData);
+    });
+}

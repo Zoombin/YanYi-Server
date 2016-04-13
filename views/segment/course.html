@@ -5,7 +5,7 @@
             <ul class="picList">
                 {% for item in list %}
                 <li>
-                    <div class="pic"><a href="#" target="_blank"><img src="{$ item.cover_url $}" /></a></div>
+                    <div class="pic"><a href="/course/{$ item.id $}" target="_blank"><img src="{$ item.cover_url $}" /></a></div>
                     <div class="title"><a href="#" target="_blank">{$ item.title $}</a></div>
                     <div class="content">{$ item.content|safe $}</div>
                 </li>
