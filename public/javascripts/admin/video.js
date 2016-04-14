@@ -15,26 +15,33 @@ $('#video_modal_add').on('shown.bs.modal', function(){
 function _clear_form(){
     $('#video_title').val('');
     $('#video_cover_url').val('');
-    $('#video_desc').val('');
+    $('#video_subtitle').val('');
+    $('#video_wechat_url').val('');
     $('#video_cover_image').hide().attr('src','');
     $('#video_title').attr('data-id', '');
+    $('#show_type1').attr("checked",'checked');
 }
 // add video info
 $('#video_save').click(function(e){
     var id = $('#video_title').attr('data-id');
     var sTitle = $('#video_title').val().trim();
     var sCoverUrl = $('#video_cover_url').val();
-    var sDesc = $('#video_desc').val();
+    var sSubTitle = $('#video_subtitle').val();
+    var sUrl = $('#video_wechat_url').val();
     if(!sTitle) {
-        $.bstip('请输入视频名称', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
+        $.bstip('请输入期数', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
+        return false;
+    }
+    if(!sSubTitle) {
+        $.bstip('请输入标题', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
     }
     if(!sCoverUrl && !id) {
         $.bstip('请上传视频封面', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
     }
-    if(!sDesc) {
-        $.bstip('请输入视频描述', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
+    if(!sUrl) {
+        $.bstip('请输入视频网址', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
     }
     // $('#video_modal_add button').attr('disabled', 'disabled');
@@ -83,13 +90,17 @@ function _deletevideo(id, oTr){
 // update, init data
 function _updatevideo(id, oTr){
     var sTitle =  $(oTr).find('td:eq(1)').html();
-    var sCoverUrl = $(oTr).find('td:eq(2) img').attr('src');
-    var sDesc = $(oTr).find('td:eq(3)').html();
+    var sSubTitle = $(oTr).find('td:eq(2)').html();
+    var sCoverUrl = $(oTr).find('td:eq(3) img').attr('src');
+    var sWechatUrl = $(oTr).find('td:eq(5)').html();
+    var sShowType = $(oTr).find('td:eq(7) div').html();
     $('#video_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#video_modal_addLabel').html('编辑视频');
     $('#video_title').attr('data-id', id).val(sTitle);
     $('#video_cover_image').show().attr('src',sCoverUrl);
-    $('#video_desc').val(sDesc);
+    $('#video_subtitle').val(sSubTitle);
+    $('#video_wechat_url').val(sWechatUrl);
+    $('#show_type'+sShowType).attr("checked",'checked');
 }
 
 // update table.is_active
