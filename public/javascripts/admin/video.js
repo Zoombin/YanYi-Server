@@ -19,7 +19,7 @@ function _clear_form(){
     $('#video_wechat_url').val('');
     $('#video_cover_image').hide().attr('src','');
     $('#video_title').attr('data-id', '');
-    $('#show_type1').attr("checked",'checked');
+    $('#show_type1').click();
 }
 // add video info
 $('#video_save').click(function(e){
@@ -100,7 +100,7 @@ function _updatevideo(id, oTr){
     $('#video_cover_image').show().attr('src',sCoverUrl);
     $('#video_subtitle').val(sSubTitle);
     $('#video_wechat_url').val(sWechatUrl);
-    $('#show_type'+sShowType).attr("checked",'checked');
+    $('#show_type'+sShowType).click();
 }
 
 // update table.is_active
