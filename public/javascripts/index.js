@@ -63,7 +63,7 @@ $('#req_btn').click(function(){
         type: 'post',
         success: function(res) {
             $.bstip(res.msg, {type: 'success'});
-            
+            clear_req_form();
         },
         error: function(a, b, c) {
             $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000, width: 'auto'});
