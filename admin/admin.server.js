@@ -23,3 +23,13 @@ exports.activity_getall = require('./api/activity').getall;
 exports.activity_add = require('./api/activity').add;
 exports.activity_active = require('./api/activity').active;
 exports.activity_remove = require('./api/activity').remove;
+
+// requirement msg, home page
+exports.req_add = require('./api/requirement').add;
+exports.req_getall = require('./api/requirement').getall;
+
+// admin team
+exports.team_getall = require('./api/team').getall;
+exports.team_add = require('./api/team').add;
+exports.team_active = require('./api/team').active;
+exports.team_remove = require('./api/team').remove;

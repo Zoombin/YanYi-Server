@@ -38,3 +38,40 @@ getCourse();
 $("#lectuer").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:false,vis:4});
 
 
+// 留言
+$('#req_btn').click(function(){
+    var sName = $('#req_name').val().trim();
+    var sEmail = $('#req_email').val().trim();
+    var sPhone = $('#req_phone').val().trim();
+    var sWebsite = $('#req_website').val().trim();
+    var sReq = $('#req_req').val().trim();
+    if(!sName) {
+        $.bstip('请输入姓名', {type: 'danger', width: 'auto'});
+        return false;
+    }
+    if(!sPhone) {
+        $.bstip('请输入电话号', {type: 'danger', width: 'auto'});
+        return false;
+    }
+    if(!sReq) {
+        $.bstip('请输入您的需求', {type: 'danger', width: 'auto'});
+        return false;
+    }
+
+    $('#req_form').ajaxSubmit({
+        url: '/admin/requirement/add',
+        type: 'post',
+        success: function(res) {
+            $.bstip(res.msg, {type: 'success'});
+            
+        },
+        error: function(a, b, c) {
+            $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000, width: 'auto'});
+        }
+    });
+});
+
+function clear_req_form(){
+    $('#req_form')[0].reset();
+}
+clear_req_form();

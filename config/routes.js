@@ -57,4 +57,14 @@ module.exports = function(app, passport) {
     app.post('/admin/activity/add', admin.activity_add);
     app.post('/admin/activity/active', admin.activity_active);
     app.post('/admin/activity/remove', admin.activity_remove);
+
+    // requirement msg
+    app.post('/admin/requirement/add', admin.req_add);
+    app.get('/admin/requirement/getall', admin.req_getall);
+
+    // admin team
+    app.get('/admin/team/getall', admin.team_getall);
+    app.post('/admin/team/add', admin.team_add);
+    app.post('/admin/team/active', admin.team_active);
+    app.post('/admin/team/remove', admin.team_remove);
 };

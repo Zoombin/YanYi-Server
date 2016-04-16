@@ -5,14 +5,14 @@ var HISTORYSTART = 1, PAGESIZE = 5;
 $('#video > div > div > h4 > button').click(function(){
     $('#video_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#video_modal_addLabel').html('添加视频');
-    _clear_form();
+    _clear_form_video();
 });
 $('#video_modal_add').on('shown.bs.modal', function(){
     $('#video_title').focus();
 });
 
 // clear form
-function _clear_form(){
+function _clear_form_video(){
     $('#video_title').val('');
     $('#video_cover_url').val('');
     $('#video_subtitle').val('');
@@ -44,7 +44,7 @@ $('#video_save').click(function(e){
         $.bstip('请输入视频网址', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
     }
-    // $('#video_modal_add button').attr('disabled', 'disabled');
+    $('#video_modal_add button').attr('disabled', 'disabled');
     $('#video_form').ajaxSubmit({
         url: '/admin/video/add',
         type: 'post',
@@ -54,7 +54,7 @@ $('#video_save').click(function(e){
             video_getall(HISTORYSTART-1);
             $('#video_modal_add button').removeAttr('disabled');
             $('#video_modal_add').modal('hide');
-            _clear_form();
+            _clear_form_video();
         },
         error: function(a, b, c) {
             $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000, width: 'auto'});

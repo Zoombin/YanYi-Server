@@ -1,0 +1,35 @@
+<table class="table table-hover" style="table-layout:fixed;">
+    <thead>
+        <tr>
+            <th style="width:5%;">#</th>
+            <th style="width:16%;">姓名</th>
+            <th style="width:16%;">电话</th>
+            <th style="width:16%;">邮箱</th>
+            <th style="width:16%;">网址</th>
+            <th style="width:16%;">需求</th>
+            <th style="width:15%;">创建时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if list.length %}
+            {% for item in list %}
+            <tr id="tr_{$item.id$}">
+                <td>{$ loop.index $}</td>
+                <td>{$ item.req_name $}</td>
+                <td>{$ item.req_phone $}</td>
+                <td>{$ item.req_email $}</td>
+                <td>{$ item.req_website $}</td>
+                <td style="overflow-x:scroll;">
+                    <div style="height:40px;">{$ item.req_req $}</div>
+                </td>
+                <td>{$ item.created_date|date('Y-m-d H:i:s', -480, 'CCT') $}</td>
+            </tr>
+            {% endfor%}
+        {% else %}
+        <tr>
+            <td colspan="5" align="center"><span class="text-muted">暂时没有用户留言。</span></td>
+        </tr>
+        {% endif %}
+        
+    </tbody>
+</table>

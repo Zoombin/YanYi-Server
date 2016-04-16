@@ -10,15 +10,16 @@ var HISTORYSTART = 1, PAGESIZE = 5;
 $('#activity > div > div > h4 > button').click(function(){
     $('#activity_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#activity_modal_addLabel').html('添加活动');
-    _clear_form();
+    _clear_form_activity();
 });
 $('#activity_modal_add').on('shown.bs.modal', function(){
     $('#activity_title').focus();
 });
 
 // clear form
-function _clear_form(){
+function _clear_form_activity(){
     $('#activity_title').val('');
+    $('#activity_subtitle').val('');
     $('#activity_cover_url').val('');
     ueContent.ready(function() {
         ueContent.setContent('');
@@ -50,7 +51,7 @@ $('#activity_save').click(function(e){
         $.bstip('请输入活动内容', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
     }
-    // $('#activity_modal_add button').attr('disabled', 'disabled');
+    $('#activity_modal_add button').attr('disabled', 'disabled');
     $('#activity_form').ajaxSubmit({
         url: '/admin/activity/add',
         type: 'post',
@@ -60,7 +61,7 @@ $('#activity_save').click(function(e){
             activity_getall(HISTORYSTART-1);
             $('#activity_modal_add button').removeAttr('disabled');
             $('#activity_modal_add').modal('hide');
-            _clear_form();
+            _clear_form_activity();
         },
         error: function(a, b, c) {
             $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000, width: 'auto'});

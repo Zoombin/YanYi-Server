@@ -1,20 +1,22 @@
 <div class="col-xs-12 text-center">
-    <div class="col-xs-6">
-        <div class="col-xs-5" style="margin-right:25px;">
-            <input type="text" class="form-control" placeholder="Name" style="margin-bottom:15px;">
-            <input type="email" class="form-control" placeholder="E-mail">
+    <form id="req_form">
+        <div class="col-xs-6">
+            <div class="col-xs-5" style="margin-right:25px;">
+                <input type="text" id="req_name" name="req_name" class="form-control" placeholder="Name" style="margin-bottom:15px;">
+                <input type="email" id="req_email" name="req_email" class="form-control" placeholder="E-mail">
+            </div>
+            <div class="col-xs-5">
+                <input type="text" id="req_phone" name="req_phone" class="form-control" placeholder="Phone" style="margin-bottom:15px;">
+                <input type="text" id="req_website" name="req_website" class="form-control" placeholder="Website">
+            </div>
         </div>
-        <div class="col-xs-5">
-            <input type="text" class="form-control" placeholder="Phone" style="margin-bottom:15px;">
-            <input type="text" class="form-control" placeholder="Website">
+        <div class="col-xs-6">
+            <div class="col-xs-8">
+                <textarea id="req_req" name="req_req" class="form-control" rows="5" placeholder="您的需求"></textarea>
+            </div>
+            <div class="col-xs-4">
+                <button id="req_btn" class="msg_btn" type="button">提 交</button>
+            </div>
         </div>
-    </div>
-    <div class="col-xs-6">
-        <div class="col-xs-8">
-            <textarea class="form-control" rows="5" placeholder="您的需求"></textarea>
-        </div>
-        <div class="col-xs-4">
-            <button class="msg_btn" type="button">提 交</button>
-        </div>
-    </div>
+    </form>
 </div>
