@@ -22,12 +22,17 @@ module.exports = function (app) {
     app.use(bodyParser.json());
 
     app.use("/admin/course/ue", ueditor(config.clientRoot, course_editor));
+    app.use("/admin/activity/ue", ueditor(config.clientRoot, activity_editor));
     
 }
 
 // business method
 var course_editor = function(req, res, next){
     var save_url = '/images/course/content';
+    _basic(req, res, next, save_url);
+}
+var activity_editor = function(req, res, next){
+    var save_url = '/images/activity/content';
     _basic(req, res, next, save_url);
 }
 

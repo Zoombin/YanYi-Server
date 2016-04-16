@@ -17,3 +17,9 @@ exports.video_getall = require('./api/video').getall;
 exports.video_add = require('./api/video').add;
 exports.video_active = require('./api/video').active;
 exports.video_remove = require('./api/video').remove;
+
+// admin activity
+exports.activity_getall = require('./api/activity').getall;
+exports.activity_add = require('./api/activity').add;
+exports.activity_active = require('./api/activity').active;
+exports.activity_remove = require('./api/activity').remove;

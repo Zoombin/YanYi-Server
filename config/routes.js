@@ -51,4 +51,10 @@ module.exports = function(app, passport) {
     app.post('/admin/video/add', admin.video_add);
     app.post('/admin/video/active', admin.video_active);
     app.post('/admin/video/remove', admin.video_remove);
+
+    // admin activity
+    app.get('/admin/activity/getall', admin.activity_getall);
+    app.post('/admin/activity/add', admin.activity_add);
+    app.post('/admin/activity/active', admin.activity_active);
+    app.post('/admin/activity/remove', admin.activity_remove);
 };
