@@ -6,7 +6,7 @@ exports.getall = function (req, res, next) {
     var iStart = req.param('START');
     var iPagesize = req.param('PAGESIZE');
 
-    var sql = "SELECT id,title,is_active,cover_url,content,created_date FROM `admin_course` WHERE is_active=1 ORDER BY id DESC ";
+    var sql = "SELECT * FROM `admin_activity` WHERE is_active=1 ORDER BY id DESC ";
 
     var cnt = "SELECT COUNT(*) AS cnt FROM (" + sql + ") t";
     mysql.query(cnt, [], function(result){
@@ -14,7 +14,7 @@ exports.getall = function (req, res, next) {
 
         sql += " LIMIT ?,?";
         mysql.query(sql, [iStart*iPagesize, iPagesize*1], function(result){
-            var tpl = swig.renderFile('views/segment/course.html', {list: result.data});
+            var tpl = swig.renderFile('views/segment/activity.html', {list: result.data});
             result.tpl = tpl;
             result.totalCount = totalCount;
             return res.send(result);
@@ -26,7 +26,7 @@ exports.getall = function (req, res, next) {
 exports.renderone = function(req, res, next){
     var oData = [];
     var id = req.param('id');
-    var sql = "SELECT id,title,is_active,cover_url,content,created_date FROM `admin_course` WHERE id=?";
+    var sql = "SELECT * FROM `admin_activity` WHERE id=?";
 
     mysql.query(sql, [id], function(result){
         oData.content = result.data[0].content;

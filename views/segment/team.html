@@ -1,0 +1,25 @@
+<div id="lectuer" class="lectuerlist">
+    <div class="prev"></div>
+    <div class="bd">
+        {% if list.length %}
+        <ul>
+            {% for item in list %}
+            <li>
+                <div class="pic">
+                    <div class="columntext">
+                        <div class="columntitle"><h5>{$ item.name $}</h5></div>
+                        <div class="columncontent">{$ item.brief $}</div>
+                    </div>
+                    <a href="javascript:void(0);" target="_blank"><img src="{$ item.cover_url $}" /></a>
+                </div>
+            </li>
+            {% endfor%}
+        </ul>
+        {% else %}
+            NO DATA!
+        {% endif %}
+        <div style="clear:both"></div>
+    </div>
+    <div class="next"></div>
+</div>
+

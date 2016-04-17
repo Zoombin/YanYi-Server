@@ -21,6 +21,13 @@ module.exports = function(app, passport) {
     app.get('/api/course/getall', core.course_getall);
     app.get('/course/:id?', core.course_renderone);
 
+    // activity
+    app.get('/api/activity/getall', core.activity_getall);
+    app.get('/activity/:id?', core.activity_renderone);
+
+    // team
+    app.get('/api/team/getall', core.team_getall);
+
 
 
     // admin pages

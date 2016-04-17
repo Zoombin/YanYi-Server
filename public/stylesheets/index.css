@@ -366,6 +366,25 @@ body{
 }
 /*activity end*/
 
+/*stick start 原创热贴*/
+.stick{
+    margin-top: 20px;
+}
+.stick .sticklistbox {
+    margin-bottom: 10px;
+}
+.stick .sticklistbox .stick_list{
+    -webkit-padding-start : 20px;
+}
+.stick .sticklistbox .stick_list li{
+    margin-bottom: 10px;
+}
+.stick .sticklistbox .stick_list li a{
+    text-decoration: none;
+    color: black;
+}
+/*stick end*/
+
 /*lectuer start*/
 .lectuer{
     width: 1145px;

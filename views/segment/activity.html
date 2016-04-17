@@ -1,0 +1,31 @@
+<div>
+    {% if list.length %}
+        {% for item in list %}
+        <div class="col-xs-4 activitybox">
+            <div class="col-xs-5 activity_img">
+                <a href="/activity/{$ item.id $}" target="_blank"><img src="{$ item.cover_url $}"></a>
+            </div>
+            <div class="col-xs-7 activity_intro">
+                <div class="activity_title">
+                    <a href="/activity/{$ item.id $}" target="_blank">{$ item.title $}</a>
+                </div>
+                <div class="activity_date text-muted">
+                    {$ item.subtitle $}
+                </div>
+                {% if item.status == 1 %}
+                <div class="activity_ongoing">
+                    进行中...
+                </div>
+                {% elseif item.status == 2 %}
+                <div class="activity_done">
+                    活动结束
+                </div>
+                {% endif %}
+                
+            </div>
+        </div>
+        {% endfor%}
+    {% else %}
+        NO DATA!
+    {% endif %}
+</div>
