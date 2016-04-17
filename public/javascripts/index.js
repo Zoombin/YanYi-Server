@@ -36,7 +36,22 @@ getCourse();
 // $("#honour").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:false,vis:2});
 
 // video
+function getVideo(){
+    $.ajax({
+        type : 'GET',
+        url: '/api/video/getall',
+        data: {PAGESIZE: PAGESIZE, START: START},
+        success: function(res) {
+            $('#index_video').empty();
+            $('#index_video').append(res.tpl);
 
+        },
+        error: function(a, b, c) {
+            $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000});
+        }
+    });
+}
+getVideo();
 
 // 需求留言
 $('#req_btn').click(function(){

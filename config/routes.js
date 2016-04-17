@@ -28,6 +28,8 @@ module.exports = function(app, passport) {
     // team
     app.get('/api/team/getall', core.team_getall);
 
+    // video
+    app.get('/api/video/getall', core.video_getall);
 
 
     // admin pages

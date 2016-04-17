@@ -1,0 +1,79 @@
+<div class="videobox col-xs-12">
+    {% if data.video3.length %}
+    {% for item in data.video3 %}
+    <div class="col-xs-6">
+        <a href="{$ item.wechat_url $}" target="_blank">
+            <img class="img_big" src="{$ item.cover_url $}">
+            <div>
+                <h4 class="video_title">{$ item.title $}</h4>
+                <div class="video_text">{$ item.subtitle $}</div>
+            </div>
+        </a>
+    </div>
+    {% endfor%}
+    {% else %}
+        NO DATA!
+    {% endif %}
+    <div class="col-xs-6">
+        <div class="col-xs-6">
+            {% if data.video2.length %}
+            {% for item in data.video2 %}
+            <div>
+                <a href="{$ item.wechat_url $}" target="_blank">
+                    <img class="img_mid" src="{$ item.cover_url $}">
+                    <div>
+                        <h4 class="video_title">{$ item.title $}</h4>
+                        <div class="video_text">{$ item.subtitle $}</div>
+                    </div>
+                </a>
+            </div>
+            {% endfor%}
+            {% else %}
+                NO DATA!
+            {% endif %}
+        </div>
+
+        <div class="col-xs-6">
+            {% if data.video1.length %}
+            {% for item in data.video1 %}
+            <div class="videolistbox col-xs-12">
+                <div class="col-xs-6">
+                    <a href="{$ item.wechat_url $}" target="_blank">
+                        <img class="img_small" src="{$ item.cover_url $}">
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="{$ item.wechat_url $}" target="_blank">
+                        <div>
+                            <h5 class="video_title">{$ item.title $}</h5>
+                            <div class="video_text">{$ item.subtitle $}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor%}
+            {% else %}
+                NO DATA!
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+<div class="col-xs-12 video_list">
+    <div style="margin-top:20px;margin-bottom:30px;">
+        <div class="grayline_dash"></div>
+    </div>
+
+    {% if data.videolist.length %}
+    {% for item in data.videolist %}
+    <div class="col-xs-4">
+        <ul class="video_ul">
+            <li><a href="{$ item.wechat_url $}" target="_blank">{$ item.title $}</a></li>
+        </ul>
+    </div>
+    {% endfor%}
+    {% else %}
+        NO DATA!
+    {% endif %}
+</div>

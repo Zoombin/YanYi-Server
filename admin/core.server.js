@@ -9,3 +9,6 @@ exports.activity_renderone = require('./core/activity').renderone;
 
 // team
 exports.team_getall = require('./core/team').getall;
+
+// video
+exports.video_getall = require('./core/video').getall;
