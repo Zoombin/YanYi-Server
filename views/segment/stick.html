@@ -1,0 +1,13 @@
+<div class="col-xs-12 sticklistbox">
+    {% if list.length %}
+        {% for item in list %}
+        <div class="col-xs-4">
+            <ul class="stick_list">
+                <li><a href="/stick/{$ item.id $}" target="_blank">{$ item.title $}</a></li>
+            </ul>
+        </div>
+        {% endfor%}
+    {% else %}
+        NO DATA!
+    {% endif %}
+</div>

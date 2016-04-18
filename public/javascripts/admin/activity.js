@@ -1,6 +1,6 @@
-var ueContent;
+var ueContent_activity;
 // init rich text editor
-ueContent = UE.getEditor('activity_content', {
+ueContent_activity = UE.getEditor('activity_content', {
     serverUrl: '/admin/activity/ue'
 });
 // for pagination
@@ -21,8 +21,8 @@ function _clear_form_activity(){
     $('#activity_title').val('');
     $('#activity_subtitle').val('');
     $('#activity_cover_url').val('');
-    ueContent.ready(function() {
-        ueContent.setContent('');
+    ueContent_activity.ready(function() {
+        ueContent_activity.setContent('');
     });
     $('#activity_cover_image').hide().attr('src','');
     $('#activity_title').attr('data-id', '');
@@ -34,7 +34,7 @@ $('#activity_save').click(function(e){
     var sTitle = $('#activity_title').val().trim();
     var sSubTitle = $('#activity_subtitle').val().trim();
     var sCoverUrl = $('#activity_cover_url').val();
-    var sContent = ueContent.getContent();
+    var sContent = ueContent_activity.getContent();
     if(!sTitle) {
         $.bstip('请输入活动名称', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
@@ -107,8 +107,8 @@ function _updateactivity(id, oTr){
     $('#activity_subtitle').val(sSubTitle);
     $('#activity_cover_image').show().attr('src',sCoverUrl);
     $('#status'+sStatus).click();
-    ueContent.ready(function() {
-        ueContent.setContent(sContent);
+    ueContent_activity.ready(function() {
+        ueContent_activity.setContent(sContent);
     });
 }
 

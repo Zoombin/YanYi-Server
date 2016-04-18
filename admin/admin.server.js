@@ -33,3 +33,9 @@ exports.team_getall = require('./api/team').getall;
 exports.team_add = require('./api/team').add;
 exports.team_active = require('./api/team').active;
 exports.team_remove = require('./api/team').remove;
+
+// admin stick
+exports.stick_getall = require('./api/stick').getall;
+exports.stick_add = require('./api/stick').add;
+exports.stick_active = require('./api/stick').active;
+exports.stick_remove = require('./api/stick').remove;

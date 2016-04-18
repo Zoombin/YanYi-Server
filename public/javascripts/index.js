@@ -109,6 +109,24 @@ function getActivity(){
 }
 getActivity();
 
+// stick
+function getStick(){
+    $.ajax({
+        type : 'GET',
+        url: '/api/stick/getall',
+        data: {PAGESIZE: PAGESIZE, START: START},
+        success: function(res) {
+            $('#index_stick').empty();
+            $('#index_stick').append(res.tpl);
+
+        },
+        error: function(a, b, c) {
+            $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000});
+        }
+    });
+}
+getStick();
+
 //lectuer
 $("#lectuer").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:false,vis:4});
 function getTeam(){

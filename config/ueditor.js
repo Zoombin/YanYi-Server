@@ -23,6 +23,7 @@ module.exports = function (app) {
 
     app.use("/admin/course/ue", ueditor(config.clientRoot, course_editor));
     app.use("/admin/activity/ue", ueditor(config.clientRoot, activity_editor));
+    app.use("/admin/stick/ue", ueditor(config.clientRoot, stick_editor));
     
 }
 
@@ -33,6 +34,10 @@ var course_editor = function(req, res, next){
 }
 var activity_editor = function(req, res, next){
     var save_url = '/images/activity/content';
+    _basic(req, res, next, save_url);
+}
+var stick_editor = function(req, res, next){
+    var save_url = '/images/stick/content';
     _basic(req, res, next, save_url);
 }
 

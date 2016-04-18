@@ -31,6 +31,10 @@ module.exports = function(app, passport) {
     // video
     app.get('/api/video/getall', core.video_getall);
 
+    // stick
+    app.get('/api/stick/getall', core.stick_getall);
+    app.get('/stick/:id?', core.stick_renderone);
+
 
     // admin pages
     var admin = require('../admin/admin.server');
@@ -76,4 +80,10 @@ module.exports = function(app, passport) {
     app.post('/admin/team/add', admin.team_add);
     app.post('/admin/team/active', admin.team_active);
     app.post('/admin/team/remove', admin.team_remove);
+
+    // admin stick
+    app.get('/admin/stick/getall', admin.stick_getall);
+    app.post('/admin/stick/add', admin.stick_add);
+    app.post('/admin/stick/active', admin.stick_active);
+    app.post('/admin/stick/remove', admin.stick_remove);
 };

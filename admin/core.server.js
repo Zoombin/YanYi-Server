@@ -12,3 +12,7 @@ exports.team_getall = require('./core/team').getall;
 
 // video
 exports.video_getall = require('./core/video').getall;
+
+// stick
+exports.stick_getall = require('./core/stick').getall;
+exports.stick_renderone = require('./core/stick').renderone;
