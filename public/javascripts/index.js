@@ -13,6 +13,24 @@ $('#nav_anchor_contactus').unbind('click').click(function(){
     $('html,body').animate({scrollTop: $("#anchor_contactus").offset().top - topOffSet}, 500);
 });
 
+// Banner
+function getBanner(){
+    $.ajax({
+        type : 'GET',
+        url: '/api/banner/getall',
+        data: {PAGESIZE: PAGESIZE, START: START},
+        success: function(res) {
+            $('#index_banner').empty();
+            $('#index_banner').append(res.tpl);
+            $('#slide').carousel();
+        },
+        error: function(a, b, c) {
+            $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000});
+        }
+    });
+}
+getBanner();
+
 // course
 function getCourse(){
     $.ajax({

@@ -17,6 +17,9 @@ module.exports = function(app, passport) {
     // init default data
     app.get('/', core.common);
 
+    // banner
+    app.get('/api/banner/getall', core.banner_getall);
+
     // course
     app.get('/api/course/getall', core.course_getall);
     app.get('/course/:id?', core.course_renderone);
@@ -52,6 +55,12 @@ module.exports = function(app, passport) {
     // admin basic
     app.get('/admin/basic/getall', admin.basic_getall);
     app.post('/admin/basic/update', admin.basic_update);
+
+    // admin banner
+    app.get('/admin/banner/getall', admin.banner_getall);
+    app.post('/admin/banner/add', admin.banner_add);
+    app.post('/admin/banner/active', admin.banner_active);
+    app.post('/admin/banner/remove', admin.banner_remove);
 
     // admin course
     app.get('/admin/course/getall', admin.course_getall);

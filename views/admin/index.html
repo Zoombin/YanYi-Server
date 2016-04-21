@@ -15,7 +15,7 @@
             <ul class="nav nav-pills nav-stacked" role="tablist">
                 <li role="presentation" class="disabled"><a href="javascript:void(0);">网站管理</a></li>
                 <li role="presentation" class="active"><a href="#basic" data-toggle="pill">基本配置</a></li>
-                <!-- <li role="presentation"><a href="#banner" data-toggle="pill">首页BANNER</a></li> -->
+                <li role="presentation"><a href="#banner" data-toggle="pill">BANNER</a></li>
                 <li role="presentation"><a href="#course" data-toggle="pill">课程列表</a></li>
                 <li role="presentation"><a href="#require" data-toggle="pill">留言列表</a></li>
                 <li role="presentation"><a href="#video" data-toggle="pill">视频列表</a></li>
@@ -27,6 +27,7 @@
         <div class="col-xs-10">
             <div class="tab-content">
                 {% include "./lib/basic.html" %}
+                {% include "./lib/banner.html" %}
                 {% include "./lib/course.html" %}
                 {% include "./lib/require.html" %}
                 {% include "./lib/video.html" %}

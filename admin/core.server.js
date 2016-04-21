@@ -1,4 +1,8 @@
 exports.common = require('./core/common').common;
+
+// banner
+exports.banner_getall = require('./core/banner').getall;
+
 // course
 exports.course_getall = require('./core/course').getall;
 exports.course_renderone = require('./core/course').renderone;

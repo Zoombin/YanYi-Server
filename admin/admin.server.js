@@ -6,6 +6,12 @@ exports.logout = require('./api/admin_user').logout;
 exports.basic_getall = require('./api/basic').getall;
 exports.basic_update = require('./api/basic').update;
 
+// admin banner
+exports.banner_getall = require('./api/banner').getall;
+exports.banner_add = require('./api/banner').add;
+exports.banner_active = require('./api/banner').active;
+exports.banner_remove = require('./api/banner').remove;
+
 // admin course
 exports.course_getall = require('./api/course').getall;
 exports.course_add = require('./api/course').add;

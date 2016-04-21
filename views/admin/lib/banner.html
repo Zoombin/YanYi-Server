@@ -1,12 +1,49 @@
-<!-- 基本配置 -->
+<!-- BANNER 列表 -->
 <div id="banner" class="tab-pane fade">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4>
-                BANNER
+                BANNER 列表
                 <button class="btn btn-primary pull-right margint5m">添加</button>
             </h4>
         </div>
+        <div id="banner-list"></div>
+        <div class="text-center">
+          <ul id="banner-pager" class="pagination pull-right"></ul>
+        </div>
        
     </div>
+</div>
+
+<!-- BANNER 列表 modal -->
+<div class="modal fade" id="banner_modal_add" tabindex="-1" role="dialog" aria-labelledby="banner_modal_addLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="banner_modal_addLabel"><!-- 添加/编辑 --></h4>
+      </div>
+      <div class="modal-body">
+        <form id="banner_form" class="form-horizontal">
+            <div class="form-group">
+                <label for="cover_url" class="col-sm-2 control-label">banner</label>
+                <div class="col-sm-10">
+                    <div class="col-xs-6">
+                      <input type="file" id="banner_cover_url" name="cover_url">
+                      <p class="help-block">.png .jpg .gif .bmp, 小于2M</p>
+                    </div>
+                    <div class="col-xs-6">
+                      <img id="banner_cover_image" style="height:60px;" src="">
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="banner_save">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
