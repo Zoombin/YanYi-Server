@@ -83,6 +83,8 @@ module.exports = function(app, passport) {
     // requirement msg
     app.post('/admin/requirement/add', admin.req_add);
     app.get('/admin/requirement/getall', admin.req_getall);
+    app.get('/admin/requirement/exportexcel', admin.req_exportexcel);
+    app.get('/admin/requirement/downloadexcel', admin.req_downloadexcel);
 
     // admin team
     app.get('/admin/team/getall', admin.team_getall);

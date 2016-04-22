@@ -33,6 +33,8 @@ exports.activity_remove = require('./api/activity').remove;
 // requirement msg, home page
 exports.req_add = require('./api/requirement').add;
 exports.req_getall = require('./api/requirement').getall;
+exports.req_exportexcel = require('./api/requirement').exportexcel;
+exports.req_downloadexcel = require('./api/requirement').downloadexcel;
 
 // admin team
 exports.team_getall = require('./api/team').getall;

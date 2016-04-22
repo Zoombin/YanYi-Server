@@ -3,8 +3,53 @@ var HISTORYSTART = 1, PAGESIZE = 5;
 
 // export excel
 $('#require > div > div > h4 > button').click(function(){
-    // TODO...
+    $('#require > div > div > h4 > button').attr('disabled', 'disabled');
+    $.ajax({
+        type : 'GET',
+        url: '/admin/requirement/exportexcel',
+        data: {},
+        success: function(res) {
+            $('#require > div > div > h4 > button').removeAttr('disabled');
+            if(res.error == 1)
+                $.bstip(res.msg, {type: 'danger'});
+            else{
+                // downloadFile();
+                $.bstip(res.msg, {type: 'success'});
+                $('#require_download').attr('href',res.path);
+                $('#require_download_click').click();
+            }
+        },
+        error: function(a, b, c) {
+            $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000});
+        }
+    });
 });
+function downloadFile(){
+
+
+    $.get('/admin/requirement/downloadexcel',function(res){
+        console.log(res);
+    });
+    // $.ajax({
+    //     type : 'GET',
+    //     url: '/admin/requirement/downloadexcel',
+    //     data: {},
+    //     success: function(res) {
+    //         if(res.error == 1)
+    //             $.bstip(res.msg, {type: 'danger'});
+    //         else{
+    //             downloadFile();
+    //             $.bstip(res.msg, {type: 'success'});
+    //         }
+    //     },
+    //     error: function(a, b, c) {
+    //         console.log(a);
+    //         console.log(b);
+    //         console.log(c);
+    //         $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000});
+    //     }
+    // });
+}
 
 // get all info
 function require_getall(iStart){
