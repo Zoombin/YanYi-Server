@@ -4,6 +4,11 @@ var aRes = {error:0, msg:'',data:Array()};
 
 exports.common = function (req, res, next) {
     var oData = [];
+    // load lang
+    var lang = req.param('lang');
+    if(!lang) lang = 'zh_cn';
+    var lang = require('../lang/' + lang +'.json')
+    oData.lang = lang;
     // get website title
     var sql = "SELECT * FROM `admin_config` WHERE type='BASIC_SITE_TITLE'";
     mysql.query(sql, [], function(result){

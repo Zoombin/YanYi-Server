@@ -16,6 +16,7 @@ module.exports = function(app, passport) {
 
     // init default data
     app.get('/', core.common);
+    app.get('/:lang?', core.common);
 
     // banner
     app.get('/api/banner/getall', core.banner_getall);

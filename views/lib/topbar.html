@@ -9,20 +9,24 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="javascript:void(0);"><img src="/images/logo-small.png" alt="言易咨询"></a>
-        <p class="navbar-text">言易 <span class="navbar-subtitle">| 言语改变世界</span></p>
+        <p class="navbar-text">{$lang.sitetitle$} <span class="navbar-subtitle">| {$lang.siteslogan$}</span></p>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="topbar-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">主页 <span class="sr-only">(current)</span></a></li>
-            <li><a href="javascript:void(0);" id="nav_anchor_course">课程服务</a></li>
-            <li><a href="javascript:void(0);" id="nav_anchor_video">言易视频</a></li>
-            <li><a href="javascript:void(0);" id="nav_anchor_contactus">联系我们</a></li>
+            <li class="active"><a href="#">{$lang.homepage$} <span class="sr-only">(current)</span></a></li>
+            <li><a href="javascript:void(0);" id="nav_anchor_course">{$lang.course$}</a></li>
+            <li><a href="javascript:void(0);" id="nav_anchor_video">{$lang.video$}</a></li>
+            <li><a href="javascript:void(0);" id="nav_anchor_contactus">{$lang.contact$}</a></li>
             <li><a id="#"><span class="divider">|</span></a></li>
             <li><a id="#">2016event</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a id="#" href="javascript:void(0);">中文 | ENGLISH</a></li>
+            <li>
+                <a class="pull-left" href="/" style="padding-right:0;">中文</a>
+                <a class="pull-left" href="javascript:void(0);" style="padding:15px 5px;"> | </a>
+                <a class="pull-left" href="/en/" style="padding-left:0;">ENGLISH</a>
+            </li>
         </ul>
     </div>
     
