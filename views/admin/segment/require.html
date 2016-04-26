@@ -17,7 +17,7 @@
                 <td>{$ loop.index $}</td>
                 <td>{$ item.req_name $}</td>
                 <td>{$ item.req_phone $}</td>
-                <td>{$ item.req_email $}</td>
+                <td><a href="mailto:{$ item.req_email $}" target="_parent" style="text-decoration:none;">{$ item.req_email $}</a></td>
                 <td>{$ item.req_website $}</td>
                 <td style="overflow-x:scroll;">
                     <div style="height:40px;">{$ item.req_req $}</div>
