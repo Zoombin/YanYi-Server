@@ -1,5 +1,9 @@
 exports.common = require('./core/common').common;
 
+// event
+exports.events = require('./core/events').getpage;
+exports.event_getall = require('./core/events').getall;
+
 // banner
 exports.banner_getall = require('./core/banner').getall;
 

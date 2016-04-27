@@ -18,6 +18,10 @@ module.exports = function(app, passport) {
     app.get('/', core.common);
     app.get('/lang/:lang?', core.common);
 
+    // event
+    app.get('/event', core.events);
+    app.get('/api/event/getall', core.event_getall);
+
     // banner
     app.get('/api/banner/getall', core.banner_getall);
 

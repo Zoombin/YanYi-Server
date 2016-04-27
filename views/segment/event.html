@@ -1,0 +1,15 @@
+<div class="row" style="min-hight:50px;">
+    {% if list.length %}
+    <ul class="timeline">
+        {% for item in list %}
+        <li class="timeline-inverted">
+          <div class="timeline-badge"></div>
+          <div class="timeline-date"><div>{$ item.event_date|date('Y.m.d', -480, 'CCT') $}</div></div>
+          <div class="timeline-panel">{$ item.content $}</div>
+        </li>
+        {% endfor%}
+    </ul>
+    {% else %}
+        <div style="padding:50px;">NO DATA!</div>
+    {% endif %}
+</div>

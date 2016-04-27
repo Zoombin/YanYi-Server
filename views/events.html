@@ -1,0 +1,18 @@
+{% include "./lib/header.html" %}
+{% include "./lib/topbar.html" %}
+
+<div class="box" style="padding-top:70px;min-height:400px;background-color:#EDEEEF;">
+    <div class="container-fluid">
+        <div class="col-xs-4">
+            <div id="calendar_event" style="background-color:white;"></div>
+        </div>
+        <div class="col-xs-8" style="background-color:white;">
+            <div id="event_content"></div>
+        </div>
+    </div>
+</div>
+
+
+{% include "./lib/footer.html" %}
+<script src="/bootstrap/calendar/calendar.js"></script>
+<script src="/javascripts/events.js"></script>

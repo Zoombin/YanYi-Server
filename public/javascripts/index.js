@@ -4,14 +4,26 @@ var PAGESIZE=6, START=0;
 // anchor
 var topOffSet = 40;
 $('#nav_anchor_course').unbind('click').click(function(){
+    _highlightNav(this);
     $('html,body').animate({scrollTop: $("#anchor_course").offset().top - topOffSet}, 500);
 });
 $('#nav_anchor_video').unbind('click').click(function(){
+    _highlightNav(this);
     $('html,body').animate({scrollTop: $("#anchor_video").offset().top - topOffSet}, 500);
 });
 $('#nav_anchor_contactus').unbind('click').click(function(){
+    _highlightNav(this);
     $('html,body').animate({scrollTop: $("#anchor_contactus").offset().top - topOffSet}, 500);
 });
+$('#nav_anchor_homepage').unbind('click').click(function(){
+    _highlightNav(this);
+    $('html,body').animate({scrollTop: 0}, 500);
+});
+
+var _highlightNav = function(obj){
+    $('#topbar ul li').removeClass('active');
+    $(obj).parent().addClass('active');
+}
 
 // Banner
 function getBanner(){
