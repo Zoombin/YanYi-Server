@@ -1,0 +1,50 @@
+<!-- event列表 -->
+<div id="event" class="tab-pane fade">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>
+                event列表
+                <button class="btn btn-primary pull-right margint5m">添加</button>
+            </h4>
+        </div>
+        <div id="event-list"></div>
+        <div class="text-center">
+          <ul id="event-pager" class="pagination pull-right"></ul>
+        </div>
+       
+    </div>
+</div>
+
+<!-- event列表 modal -->
+<div class="modal fade" id="event_modal_add" tabindex="-1" role="dialog" aria-labelledby="event_modal_addLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="event_modal_addLabel"><!-- 添加/编辑 --></h4>
+      </div>
+      <div class="modal-body">
+        <form id="event_form" class="form-horizontal">
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">日期</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="event_date" name="event_date" placeholder="日期">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="cover_url" class="col-sm-2 control-label">内容</label>
+                <div class="col-sm-10">
+                     <textarea id="event_content" name="content" class="form-control" rows="4" placeholder="内容"></textarea>
+                </div>
+            </div>
+            
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="event_save">保存</button>
+      </div>
+    </div>
+  </div>
+</div>

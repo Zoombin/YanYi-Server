@@ -16,7 +16,7 @@ module.exports = function(app, passport) {
 
     // init default data
     app.get('/', core.common);
-    app.get('/:lang?', core.common);
+    app.get('/lang/:lang?', core.common);
 
     // banner
     app.get('/api/banner/getall', core.banner_getall);
@@ -98,4 +98,10 @@ module.exports = function(app, passport) {
     app.post('/admin/stick/add', admin.stick_add);
     app.post('/admin/stick/active', admin.stick_active);
     app.post('/admin/stick/remove', admin.stick_remove);
+
+    // admin event
+    app.get('/admin/event/getall', admin.event_getall);
+    app.post('/admin/event/add', admin.event_add);
+    app.post('/admin/event/active', admin.event_active);
+    app.post('/admin/event/remove', admin.event_remove);
 };

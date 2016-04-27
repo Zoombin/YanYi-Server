@@ -47,3 +47,9 @@ exports.stick_getall = require('./api/stick').getall;
 exports.stick_add = require('./api/stick').add;
 exports.stick_active = require('./api/stick').active;
 exports.stick_remove = require('./api/stick').remove;
+
+// admin event
+exports.event_getall = require('./api/event').getall;
+exports.event_add = require('./api/event').add;
+exports.event_active = require('./api/event').active;
+exports.event_remove = require('./api/event').remove;
