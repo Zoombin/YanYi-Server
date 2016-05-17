@@ -1,4 +1,4 @@
-var ueContent_activity;
+var ueContent_activity, VAR_LANG_ACTIVITY='zh_cn';
 // init rich text editor
 ueContent_activity = UE.getEditor('activity_content', {
     serverUrl: '/admin/activity/ue'
@@ -7,7 +7,7 @@ ueContent_activity = UE.getEditor('activity_content', {
 var HISTORYSTART = 1, PAGESIZE = 5;
 
 // show add modal when lick
-$('#activity > div > div > h4 > button').click(function(){
+$('#activity_btn_add').click(function(){
     $('#activity_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#activity_modal_addLabel').html('添加活动');
     _clear_form_activity();
@@ -55,7 +55,7 @@ $('#activity_save').click(function(e){
     $('#activity_form').ajaxSubmit({
         url: '/admin/activity/add',
         type: 'post',
-        data:{id:id},
+        data:{id:id, lang: VAR_LANG_ACTIVITY},
         success: function(res) {
             $.bstip(res.msg, {type: 'success'});
             activity_getall(HISTORYSTART-1);
@@ -172,7 +172,7 @@ function activity_getall(iStart){
     $.ajax({
         type : 'GET',
         url: '/admin/activity/getall',
-        data: {PAGESIZE: PAGESIZE, START: iStart},
+        data: {PAGESIZE: PAGESIZE, START: iStart, lang: VAR_LANG_ACTIVITY},
         success: function(res) {
             $('#activity-list').empty();
             $('#activity-list').append(res.tpl);
@@ -203,5 +203,13 @@ function activity_getall(iStart){
 }
 
 $('a[href="#activity"]').on('show.bs.tab', function(){
+    activity_getall(0);
+});
+$('#activity_btn_cn').unbind('click').click(function(){
+    VAR_LANG_ACTIVITY='zh_cn';
+    activity_getall(0);
+});
+$('#activity_btn_en').unbind('click').click(function(){
+    VAR_LANG_ACTIVITY='en';
     activity_getall(0);
 });

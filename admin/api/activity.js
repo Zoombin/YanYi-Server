@@ -10,15 +10,16 @@ var image_type = Array('.jpg', '.bmg', '.png', '.gif');
 exports.getall = function (req, res, next) {
     var iStart = req.param('START');
     var iPagesize = req.param('PAGESIZE');
+    var lang = req.param('lang');
 
-    var sql = "SELECT id,title,is_active,cover_url,`subtitle`,created_date,`content`,`status` FROM `admin_activity` ORDER BY id DESC ";
+    var sql = "SELECT id,title,is_active,cover_url,`subtitle`,created_date,`content`,`status` FROM `admin_activity` WHERE lang=? ORDER BY id DESC ";
 
     var cnt = "SELECT COUNT(*) AS cnt FROM (" + sql + ") t";
-    mysql.query(cnt, [], function(result){
+    mysql.query(cnt, [lang], function(result){
         var totalCount = result.data[0].cnt;
 
         sql += " LIMIT ?,?";
-        mysql.query(sql, [iStart*iPagesize, iPagesize*1], function(result){
+        mysql.query(sql, [lang, iStart*iPagesize, iPagesize*1], function(result){
             var tpl = swig.renderFile('views/admin/segment/activity.html', {list: result.data});
             result.tpl = tpl;
             result.totalCount = totalCount;
@@ -34,6 +35,7 @@ exports.add = function(req, res, next){
     var sUrl = req.param('cover_url');
     var sContent = req.param('content');
     var iStatus = req.param('status');
+    var lang = req.param('lang');
     if(!sTitle){
         aRes.error = 1;
         aRes.msg = '请输入活动名称';
@@ -110,8 +112,8 @@ exports.add = function(req, res, next){
                     });
                 }else{
                     // 添加
-                    var sql = 'INSERT INTO admin_activity SET title=?,cover_url=?,subtitle=?,`content`=?,`status`=?,created_date=NOW()';
-                    mysql.query(sql, [sTitle,cover_url,sSubTitle,sContent,iStatus], function(result){
+                    var sql = 'INSERT INTO admin_activity SET title=?,cover_url=?,subtitle=?,`content`=?,`status`=?,lang=?,created_date=NOW()';
+                    mysql.query(sql, [sTitle,cover_url,sSubTitle,sContent,iStatus,lang], function(result){
                         return res.send(result);
                     });
                 }

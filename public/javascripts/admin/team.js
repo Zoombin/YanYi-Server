@@ -1,8 +1,8 @@
 // for pagination
-var HISTORYSTART = 1, PAGESIZE = 5;
+var HISTORYSTART = 1, PAGESIZE = 5, VAR_LANG_TEAM='zh_cn';
 
 // show add modal when lick
-$('#team > div > div > h4 > button').click(function(){
+$('#team_btn_add').click(function(){
     $('#team_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#team_modal_addLabel').html('添加讲师');
     _clear_form_team();
@@ -42,7 +42,7 @@ $('#team_save').click(function(e){
     $('#team_form').ajaxSubmit({
         url: '/admin/team/add',
         type: 'post',
-        data:{id:id},
+        data:{id:id, lang: VAR_LANG_TEAM},
         success: function(res) {
             $.bstip(res.msg, {type: 'success'});
             team_getall(HISTORYSTART-1);
@@ -153,7 +153,7 @@ function team_getall(iStart){
     $.ajax({
         type : 'GET',
         url: '/admin/team/getall',
-        data: {PAGESIZE: PAGESIZE, START: iStart},
+        data: {PAGESIZE: PAGESIZE, START: iStart, lang: VAR_LANG_TEAM},
         success: function(res) {
             $('#team-list').empty();
             $('#team-list').append(res.tpl);
@@ -184,5 +184,13 @@ function team_getall(iStart){
 }
 
 $('a[href="#team"]').on('show.bs.tab', function(){
+    team_getall(0);
+});
+$('#team_btn_cn').unbind('click').click(function(){
+    VAR_LANG_TEAM='zh_cn';
+    team_getall(0);
+});
+$('#team_btn_en').unbind('click').click(function(){
+    VAR_LANG_TEAM='en';
     team_getall(0);
 });

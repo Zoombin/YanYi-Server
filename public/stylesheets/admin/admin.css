@@ -16,6 +16,9 @@
 .margint5m {
     margin-top: -5px;
 }
+.marginr5 {
+    margin-right: 5px;
+}
 
 #course .cover_img, #course_modal_add .cover_img, #video .cover_img, #video_modal_add .cover_img,
 #activity .cover_img, #activity_modal_add .cover_img{

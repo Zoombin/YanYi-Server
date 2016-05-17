@@ -10,15 +10,16 @@ var image_type = Array('.jpg', '.bmg', '.png', '.gif');
 exports.getall = function (req, res, next) {
     var iStart = req.param('START');
     var iPagesize = req.param('PAGESIZE');
+    var lang = req.param('lang');
 
-    var sql = "SELECT * FROM `admin_stick` ORDER BY id DESC ";
+    var sql = "SELECT * FROM `admin_stick` WHERE lang=? ORDER BY id DESC ";
 
     var cnt = "SELECT COUNT(*) AS cnt FROM (" + sql + ") t";
-    mysql.query(cnt, [], function(result){
+    mysql.query(cnt, [lang], function(result){
         var totalCount = result.data[0].cnt;
 
         sql += " LIMIT ?,?";
-        mysql.query(sql, [iStart*iPagesize, iPagesize*1], function(result){
+        mysql.query(sql, [lang, iStart*iPagesize, iPagesize*1], function(result){
             var tpl = swig.renderFile('views/admin/segment/stick.html', {list: result.data});
             result.tpl = tpl;
             result.totalCount = totalCount;
@@ -31,6 +32,7 @@ exports.add = function(req, res, next){
     var id = req.param('id');
     var sTitle = req.param('title');
     var sContent = req.param('content');
+    var lang = req.param('lang');
     if(!sTitle){
         aRes.error = 1;
         aRes.msg = '请输入活动名称';
@@ -50,8 +52,8 @@ exports.add = function(req, res, next){
         });
     }else{
         // 添加
-        var sql = 'INSERT INTO admin_stick SET title=?,`content`=?,created_date=NOW()';
-        mysql.query(sql, [sTitle,sContent], function(result){
+        var sql = 'INSERT INTO admin_stick SET title=?,`content`=?,lang=?,created_date=NOW()';
+        mysql.query(sql, [sTitle,sContent,lang], function(result){
             return res.send(result);
         });
     }

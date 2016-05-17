@@ -1,4 +1,4 @@
-var ueContent_course;
+var ueContent_course, VAR_LANG_COURSE='zh_cn';
 // init rich text editor
 ueContent_course = UE.getEditor('course_content', {
     serverUrl: '/admin/course/ue'
@@ -7,7 +7,7 @@ ueContent_course = UE.getEditor('course_content', {
 var HISTORYSTART = 1, PAGESIZE = 5;
 
 // show add modal when lick
-$('#course > div > div > h4 > button').click(function(){
+$('#course_btn_add').click(function(){
     $('#course_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#course_modal_addLabel').html('添加课程');
     _clear_form_course();
@@ -48,7 +48,7 @@ $('#course_save').click(function(e){
     $('#course_form').ajaxSubmit({
         url: '/admin/course/add',
         type: 'post',
-        data:{id:id},
+        data:{id:id, lang: VAR_LANG_COURSE},
         success: function(res) {
             $.bstip(res.msg, {type: 'success'});
             getall(HISTORYSTART-1);
@@ -161,7 +161,7 @@ function getall(iStart){
     $.ajax({
         type : 'GET',
         url: '/admin/course/getall',
-        data: {PAGESIZE: PAGESIZE, START: iStart},
+        data: {PAGESIZE: PAGESIZE, START: iStart, lang: VAR_LANG_COURSE},
         success: function(res) {
             $('#course-list').empty();
             $('#course-list').append(res.tpl);
@@ -192,5 +192,14 @@ function getall(iStart){
 }
 
 $('a[href="#course"]').on('show.bs.tab', function(){
+    getall(0);
+});
+
+$('#course_btn_cn').unbind('click').click(function(){
+    VAR_LANG_COURSE='zh_cn';
+    getall(0);
+});
+$('#course_btn_en').unbind('click').click(function(){
+    VAR_LANG_COURSE='en';
     getall(0);
 });

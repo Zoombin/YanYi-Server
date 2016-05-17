@@ -1,4 +1,4 @@
-var ueContent_stick;
+var ueContent_stick, VAR_LANG_STICK='zh_cn';
 // init rich text editor
 ueContent_stick = UE.getEditor('stick_content', {
     serverUrl: '/admin/stick/ue'
@@ -7,7 +7,7 @@ ueContent_stick = UE.getEditor('stick_content', {
 var HISTORYSTART = 1, PAGESIZE = 5;
 
 // show add modal when lick
-$('#stick > div > div > h4 > button').click(function(){
+$('#stick_btn_add').click(function(){
     $('#stick_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#stick_modal_addLabel').html('添加帖子');
     _clear_form_stick();
@@ -42,7 +42,7 @@ $('#stick_save').click(function(e){
     $('#stick_form').ajaxSubmit({
         url: '/admin/stick/add',
         type: 'post',
-        data:{id:id},
+        data:{id:id, lang: VAR_LANG_STICK},
         success: function(res) {
             $.bstip(res.msg, {type: 'success'});
             stick_getall(HISTORYSTART-1);
@@ -153,7 +153,7 @@ function stick_getall(iStart){
     $.ajax({
         type : 'GET',
         url: '/admin/stick/getall',
-        data: {PAGESIZE: PAGESIZE, START: iStart},
+        data: {PAGESIZE: PAGESIZE, START: iStart, lang: VAR_LANG_STICK},
         success: function(res) {
             $('#stick-list').empty();
             $('#stick-list').append(res.tpl);
@@ -184,5 +184,13 @@ function stick_getall(iStart){
 }
 
 $('a[href="#stick"]').on('show.bs.tab', function(){
+    stick_getall(0);
+});
+$('#stick_btn_cn').unbind('click').click(function(){
+    VAR_LANG_STICK='zh_cn';
+    stick_getall(0);
+});
+$('#stick_btn_en').unbind('click').click(function(){
+    VAR_LANG_STICK='en';
     stick_getall(0);
 });

@@ -10,15 +10,21 @@ var image_type = Array('.jpg', '.bmg', '.png', '.gif');
 exports.getall = function (req, res, next) {
     var iStart = req.param('START');
     var iPagesize = req.param('PAGESIZE');
+    var lang = req.param('lang');
 
-    var sql = "SELECT id,title,is_active,cover_url,content,created_date FROM `admin_course` ORDER BY id DESC ";
+    var param = [];
+
+    var sql = "SELECT id,title,is_active,cover_url,content,created_date FROM `admin_course` WHERE lang=? ORDER BY id DESC ";
+    param.push(lang);
 
     var cnt = "SELECT COUNT(*) AS cnt FROM (" + sql + ") t";
-    mysql.query(cnt, [], function(result){
+    mysql.query(cnt, param, function(result){
         var totalCount = result.data[0].cnt;
 
         sql += " LIMIT ?,?";
-        mysql.query(sql, [iStart*iPagesize, iPagesize*1], function(result){
+        param.push(iStart*iPagesize);
+        param.push(iPagesize*1);
+        mysql.query(sql, param, function(result){
             var tpl = swig.renderFile('views/admin/segment/course.html', {list: result.data});
             result.tpl = tpl;
             result.totalCount = totalCount;
@@ -32,6 +38,7 @@ exports.add = function(req, res, next){
     var sTitle = req.param('title');
     var sContent = req.param('content');
     var sUrl = req.param('cover_url');
+    var lang = req.param('lang');
     if(!sTitle){
         aRes.error = 1;
         aRes.msg = '请输入课程名称';
@@ -103,8 +110,8 @@ exports.add = function(req, res, next){
                     });
                 }else{
                     // 添加
-                    var sql = 'INSERT INTO admin_course SET title=?,cover_url=?,content=?,created_date=NOW()';
-                    mysql.query(sql, [sTitle,cover_url,sContent], function(result){
+                    var sql = 'INSERT INTO admin_course SET title=?,cover_url=?,content=?,lang=?,created_date=NOW()';
+                    mysql.query(sql, [sTitle,cover_url,sContent,lang], function(result){
                         return res.send(result);
                     });
                 }

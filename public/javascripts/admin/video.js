@@ -1,8 +1,8 @@
 // for pagination
-var HISTORYSTART = 1, PAGESIZE = 5;
+var HISTORYSTART = 1, PAGESIZE = 5, VAR_LANG_VIDEO='zh_cn';
 
 // show add modal when lick
-$('#video > div > div > h4 > button').click(function(){
+$('#video_btn_add').click(function(){
     $('#video_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#video_modal_addLabel').html('添加视频');
     _clear_form_video();
@@ -48,7 +48,7 @@ $('#video_save').click(function(e){
     $('#video_form').ajaxSubmit({
         url: '/admin/video/add',
         type: 'post',
-        data:{id:id},
+        data:{id:id, lang: VAR_LANG_VIDEO},
         success: function(res) {
             $.bstip(res.msg, {type: 'success'});
             video_getall(HISTORYSTART-1);
@@ -163,7 +163,7 @@ function video_getall(iStart){
     $.ajax({
         type : 'GET',
         url: '/admin/video/getall',
-        data: {PAGESIZE: PAGESIZE, START: iStart},
+        data: {PAGESIZE: PAGESIZE, START: iStart, lang: VAR_LANG_VIDEO},
         success: function(res) {
             $('#video-list').empty();
             $('#video-list').append(res.tpl);
@@ -194,5 +194,13 @@ function video_getall(iStart){
 }
 
 $('a[href="#video"]').on('show.bs.tab', function(){
+    video_getall(0);
+});
+$('#video_btn_cn').unbind('click').click(function(){
+    VAR_LANG_VIDEO='zh_cn';
+    video_getall(0);
+});
+$('#video_btn_en').unbind('click').click(function(){
+    VAR_LANG_VIDEO='en';
     video_getall(0);
 });
