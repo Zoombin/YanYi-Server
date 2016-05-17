@@ -7,8 +7,9 @@ exports.common = function (req, res, next) {
     // load lang
     var lang = req.param('lang');
     if(!lang) lang = 'zh_cn';
-    var lang = require('../lang/' + lang +'.json')
-    oData.lang = lang;
+    var lang_json = require('../lang/' + lang +'.json')
+    oData.lang = lang_json;
+    oData.lang_value = lang;
     // get website title
     var sql = "SELECT * FROM `admin_config` WHERE type='BASIC_SITE_TITLE'";
     mysql.query(sql, [], function(result){

@@ -1,5 +1,6 @@
 // 课程/活动等 读取的个数读取的个数
 var PAGESIZE=6, START=0;
+var lang = $('#lang_value').html();
 
 // anchor
 var topOffSet = 40;
@@ -48,7 +49,7 @@ function getCourse(){
     $.ajax({
         type : 'GET',
         url: '/api/course/getall',
-        data: {PAGESIZE: PAGESIZE, START: START},
+        data: {PAGESIZE: PAGESIZE, START: START, lang: lang},
         success: function(res) {
             $('#index_course').empty();
             $('#index_course').append(res.tpl);
@@ -70,7 +71,7 @@ function getVideo(){
     $.ajax({
         type : 'GET',
         url: '/api/video/getall',
-        data: {PAGESIZE: PAGESIZE, START: START},
+        data: {PAGESIZE: PAGESIZE, START: START, lang: lang},
         success: function(res) {
             $('#index_video').empty();
             $('#index_video').append(res.tpl);
@@ -126,7 +127,7 @@ function getActivity(){
     $.ajax({
         type : 'GET',
         url: '/api/activity/getall',
-        data: {PAGESIZE: PAGESIZE, START: START},
+        data: {PAGESIZE: PAGESIZE, START: START, lang: lang},
         success: function(res) {
             $('#index_activity').empty();
             $('#index_activity').append(res.tpl);
@@ -144,7 +145,7 @@ function getStick(){
     $.ajax({
         type : 'GET',
         url: '/api/stick/getall',
-        data: {PAGESIZE: PAGESIZE, START: START},
+        data: {PAGESIZE: PAGESIZE, START: START, lang: lang},
         success: function(res) {
             $('#index_stick').empty();
             $('#index_stick').append(res.tpl);
@@ -163,7 +164,7 @@ function getTeam(){
     $.ajax({
         type : 'GET',
         url: '/api/team/getall',
-        data: {PAGESIZE: PAGESIZE, START: START},
+        data: {PAGESIZE: PAGESIZE, START: START, lang: lang},
         success: function(res) {
             $('#index_team').empty();
             $('#index_team').append(res.tpl);
