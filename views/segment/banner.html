@@ -12,7 +12,7 @@
     <div class="carousel-inner" role="listbox">
         {% for item in list %}
         <div class="item {%if loop.first%}active{%endif%}">
-          <img style="height:468px;" src="{$item.image_url$}" alt="banner">
+          <img style="max-height:468px;" src="{$item.image_url$}" alt="banner">
         </div>
         {% endfor%}
     </div>
