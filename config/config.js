@@ -2,8 +2,10 @@
 var path = require('path');
 var rootPath = path.normalize(__dirname + '/..');
 var pkg = require(rootPath + '/package.json');
+var express = require('express');
+var app = express();
 
-module.exports = {
+var config = {
     root: rootPath,
     adminRoot: rootPath + '/admin',
     clientRoot: rootPath + '/public',
@@ -34,3 +36,10 @@ module.exports = {
     projectname: 'YanYi-Web'
 };
 
+// wesley local test
+if ('wesley' == app.get('env')) {
+  config.mysql.password = '';
+  app.set('json spaces', 2);
+}
+
+module.exports = config;

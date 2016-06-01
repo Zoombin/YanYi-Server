@@ -21,6 +21,11 @@ module.exports = function (app) {
 
     app.disable('x-powered-by');
 
+    // for test!!
+    if ('wesley' == app.get('env')) {
+      app.set('json spaces', 2);
+    }
+
     app.use(function(req, res, next) {
         res.locals.user = req.session.user;
         var err = req.session.error_msg;
