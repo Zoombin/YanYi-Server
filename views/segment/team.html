@@ -8,9 +8,11 @@
                 <div class="pic">
                     <div class="columntext">
                         <div class="columntitle"><h5>{$ item.name $}</h5></div>
-                        <div class="columncontent">{$ item.brief $}</div>
+                        <div class="columncontent">{$ item.brief|safe $}</div>
                     </div>
-                    <a href="javascript:void(0);" target="_blank"><img src="{$ item.cover_url $}" /></a>
+                    <a href="/team/{$ item.id $}" target="_blank">
+                        <img src="{$ item.cover_url $}" />
+                    </a>
                 </div>
             </li>
             {% endfor%}

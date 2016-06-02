@@ -1,5 +1,10 @@
 // for pagination
 var HISTORYSTART = 1, PAGESIZE = 5, VAR_LANG_TEAM='zh_cn';
+var ueContent_brief;
+// init rich text editor
+ueContent_brief = UE.getEditor('team_brief', {
+    serverUrl: '/admin/team/ue'
+});
 
 // show add modal when lick
 $('#team_btn_add').click(function(){
@@ -15,7 +20,10 @@ $('#team_modal_add').on('shown.bs.modal', function(){
 function _clear_form_team(){
     $('#team_title').val('');
     $('#team_cover_url').val('');
-    $('#team_brief').val('');
+    // $('#team_brief').val('');
+    ueContent_brief.ready(function() {
+        ueContent_brief.setContent('');
+    });
     $('#team_cover_image').hide().attr('src','');
     $('#team_title').attr('data-id', '');
 }
@@ -24,7 +32,8 @@ $('#team_save').click(function(e){
     var id = $('#team_title').attr('data-id');
     var sTitle = $('#team_title').val().trim();
     var sCoverUrl = $('#team_cover_url').val();
-    var sBrief = $('#team_brief').val();
+    // var sBrief = $('#team_brief').val();
+    var sBrief = ueContent_brief.getContent();
     if(!sTitle) {
         $.bstip('请输入姓名', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
@@ -90,7 +99,10 @@ function _updateteam(id, oTr){
     $('#team_modal_addLabel').html('编辑讲师');
     $('#team_title').attr('data-id', id).val(sTitle);
     $('#team_cover_image').show().attr('src',sCoverUrl);
-    $('#team_brief').val(sBrief);
+    // $('#team_brief').val(sBrief);
+    ueContent_brief.ready(function() {
+        ueContent_brief.setContent(sBrief);
+    });
 }
 
 // update table.is_active

@@ -448,7 +448,7 @@ body{
 .lectuerlist .bd ul li .pic .columntext .columncontent{
     font-size: 12px;
     line-height: 24px;
-    height: 72px;
+    /*height: 82px;*/
     overflow: hidden;
     text-overflow:ellipsis;
     display: -webkit-box;
@@ -458,11 +458,12 @@ body{
 .lectuerlist .bd ul li .pic .columntext{
     bottom:-100%;
     width:inherit;
-    height:30%;
+    height:33%;
     position:absolute;
     color: white;
     text-align: left;
-    padding:10px;
+    /*padding:10px;*/
+    padding:0 10px;
     background:rgba(0,0,0,0.7);
     z-index:250;
     -moz-transition:all .3s ease-in-out;

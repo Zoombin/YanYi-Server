@@ -22,3 +22,21 @@ exports.getall = function (req, res, next) {
         });
     });
 };
+
+// 渲染 讲师详情页面
+exports.renderone = function(req, res, next){
+    var oData = [];
+    var id = req.param('id');
+    var sql = "SELECT id,name,is_active,cover_url,brief,created_date FROM `admin_team` WHERE id=?";
+
+    mysql.query(sql, [id], function(result){
+        oData.content = result.data[0].brief;
+        
+        var sql = "SELECT * FROM `admin_config` WHERE type='BASIC_SITE_TITLE'";
+        mysql.query(sql, [], function(result){
+            oData.site_title = result.data[0].value;
+
+            res.render('content', oData);
+        });
+    });
+}

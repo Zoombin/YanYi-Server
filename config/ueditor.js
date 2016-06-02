@@ -24,6 +24,7 @@ module.exports = function (app) {
     app.use("/admin/course/ue", ueditor(config.clientRoot, course_editor));
     app.use("/admin/activity/ue", ueditor(config.clientRoot, activity_editor));
     app.use("/admin/stick/ue", ueditor(config.clientRoot, stick_editor));
+    app.use("/admin/team/ue", ueditor(config.clientRoot, team_editor));
     
 }
 
@@ -40,7 +41,10 @@ var stick_editor = function(req, res, next){
     var save_url = '/images/stick/content';
     _basic(req, res, next, save_url);
 }
-
+var team_editor = function(req, res, next){
+    var save_url = '/images/team/content';
+    _basic(req, res, next, save_url);
+}
 
 var _basic = function(req, res, next, save_url){
     // ueditor 客户发起上传图片请求

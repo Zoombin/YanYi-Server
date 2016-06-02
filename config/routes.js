@@ -35,6 +35,7 @@ module.exports = function(app, passport) {
 
     // team
     app.get('/api/team/getall', core.team_getall);
+    app.get('/team/:id?', core.team_renderone);
 
     // video
     app.get('/api/video/getall', core.video_getall);
