@@ -5,7 +5,7 @@
         <li class="timeline-inverted">
           <div class="timeline-badge"></div>
           <div class="timeline-date"><div>{$ item.event_date|date('Y.m.d', -480, 'CCT') $}</div></div>
-          <div class="timeline-panel">{$ item.content $}</div>
+          <div class="timeline-panel">{$ item.content|safe $}</div>
         </li>
         {% endfor%}
     </ul>

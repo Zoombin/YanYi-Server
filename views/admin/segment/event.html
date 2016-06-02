@@ -15,7 +15,7 @@
             <tr id="tr_{$item.id$}">
                 <td>{$ loop.index $}</td>
                 <td>{% if item.event_date %}{$ item.event_date|date('Y-m-d', -480, 'CCT') $}{%endif%}</td>
-                <td style="overflow-x:scroll;"><div style="height:50px;">{$ item.content$}</div></td>
+                <td style="overflow-x:scroll;"><div style="height:50px;">{$ item.content|safe $}</div></td>
                 <td class="tag-status">
                     {% if item.is_active == '1' %}
                     <button type="button" data-id="{$item.id$}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
