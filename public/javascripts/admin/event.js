@@ -1,8 +1,8 @@
 // for pagination
 var HISTORYSTART = 1, PAGESIZE = 5;
-var ueContent_course;
+var ueContent_event;
 // init rich text editor
-ueContent_course = UE.getEditor('event_content', {
+ueContent_event = UE.getEditor('event_content', {
     serverUrl: '/admin/event/ue'
 });
 
@@ -27,8 +27,8 @@ $('#event_modal_add').on('shown.bs.modal', function(){
 function _clear_form_event(){
     $('#event_date').val('');
     // $('#event_content').val('');
-    ueContent_course.ready(function() {
-        ueContent_course.setContent('');
+    ueContent_event.ready(function() {
+        ueContent_event.setContent('');
     });
     $('#event_date').attr('data-id', '');
     $('#event_date').datepicker('update', '');
@@ -38,7 +38,7 @@ $('#event_save').click(function(e){
     var id = $('#event_date').attr('data-id');
     var sEventDate = $('#event_date').val().trim();
     // var sContent = $('#event_content').val();
-    var sContent = ueContent_course.getContent();
+    var sContent = ueContent_event.getContent();
     if(!sEventDate) {
         $.bstip('请输入事件日期', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
@@ -100,8 +100,8 @@ function _updateevent(id, oTr){
     $('#event_date').attr('data-id', id).val(sEventDate);
     $('#event_date').datepicker('setDate', sEventDate);
     // $('#event_content').val(sContent);
-    ueContent_course.ready(function() {
-        ueContent_course.setContent(sContent);
+    ueContent_event.ready(function() {
+        ueContent_event.setContent(sContent);
     });
 }
 

@@ -14,6 +14,7 @@ $('#course_btn_add').click(function(){
 });
 $('#course_modal_add').on('shown.bs.modal', function(){
     $('#course_title').focus();
+    $('#course_sort_order').val(500);
 });
 
 // clear form
@@ -30,10 +31,25 @@ function _clear_form_course(){
 $('#course_save').click(function(e){
     var id = $('#course_title').attr('data-id');
     var sTitle = $('#course_title').val().trim();
+    var sSortOrder = $('#course_sort_order').val().trim();
+    sSortOrder = Number(sSortOrder);
     var sCoverUrl = $('#course_cover_url').val();
     var sContent = ueContent_course.getContent();
+    var reg =/^[0-9]*[1-9][0-9]*$/; // 检查是否为正整数
     if(!sTitle) {
         $.bstip('请输入课程名称', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
+        return false;
+    }
+    if(!sSortOrder){
+        $.bstip('请输入排序', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
+        return false;
+    }
+    if(!reg.test(sSortOrder)){
+        $.bstip('排序只能为正整数', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
+        return false;
+    }
+    if(sSortOrder > 9999 || sSortOrder < 1){
+        $.bstip('排序只能在 1 和 9999 之间', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
     }
     if(!sCoverUrl && !id) {
@@ -92,9 +108,11 @@ function _updatecourse(id, oTr){
     var sTitle =  $(oTr).find('td:eq(1)').html();
     var sCoverUrl = $(oTr).find('td:eq(2) img').attr('src');
     var sContent = $(oTr).find('td:eq(3) div').html();
+    var sSortOrder =  $(oTr).find('td:eq(5)').html();
     $('#course_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#course_modal_addLabel').html('编辑课程');
     $('#course_title').attr('data-id', id).val(sTitle);
+    $('#course_sort_order').val(sSortOrder);
     $('#course_cover_image').show().attr('src',sCoverUrl);
     ueContent_course.ready(function() {
         ueContent_course.setContent(sContent);

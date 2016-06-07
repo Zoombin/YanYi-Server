@@ -14,7 +14,7 @@ exports.getall = function (req, res, next) {
 
     var param = [];
 
-    var sql = "SELECT id,title,is_active,cover_url,content,created_date FROM `admin_course` WHERE lang=? ORDER BY id DESC ";
+    var sql = "SELECT id,title,is_active,cover_url,content,sort_order,created_date FROM `admin_course` WHERE lang=? ORDER BY id DESC ";
     param.push(lang);
 
     var cnt = "SELECT COUNT(*) AS cnt FROM (" + sql + ") t";
@@ -39,6 +39,7 @@ exports.add = function(req, res, next){
     var sContent = req.param('content');
     var sUrl = req.param('cover_url');
     var lang = req.param('lang');
+    var sort_order = req.param('sort_order');
     if(!sTitle){
         aRes.error = 1;
         aRes.msg = '请输入课程名称';
@@ -53,6 +54,9 @@ exports.add = function(req, res, next){
         aRes.error = 1;
         aRes.msg = '请输入课程内容';
         return res.send(aRes);
+    }
+    if(!sort_order){
+        sort_order = 500;
     }
 
     if(req.files && req.files.cover_url != 'undifined'){
@@ -110,8 +114,8 @@ exports.add = function(req, res, next){
                     });
                 }else{
                     // 添加
-                    var sql = 'INSERT INTO admin_course SET title=?,cover_url=?,content=?,lang=?,created_date=NOW()';
-                    mysql.query(sql, [sTitle,cover_url,sContent,lang], function(result){
+                    var sql = 'INSERT INTO admin_course SET title=?,cover_url=?,content=?,lang=?,sort_order=?,created_date=NOW()';
+                    mysql.query(sql, [sTitle,cover_url,sContent,lang,sort_order], function(result){
                         return res.send(result);
                     });
                 }
@@ -121,8 +125,8 @@ exports.add = function(req, res, next){
     }else{
         // 更新时,没有上传封面图片
         // update record
-        var sql = 'UPDATE admin_course SET title=?,content=?,updated_date=NOW() WHERE id=?';
-        mysql.query(sql, [sTitle,sContent, id], function(result){
+        var sql = 'UPDATE admin_course SET title=?,content=?,sort_order=?,updated_date=NOW() WHERE id=?';
+        mysql.query(sql, [sTitle,sContent,sort_order, id], function(result){
             return res.send(result);
         });
     }

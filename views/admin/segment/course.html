@@ -6,7 +6,8 @@
             <th style="width:10%;">封面</th>
             <th style="width:25%;">内容</th>
             <th style="width:5%;">状态</th>
-            <th style="width:16%;">创建时间</th>
+            <th style="width:5%;">排序</th>
+            <th style="width:11%;">创建时间</th>
             <th style="width:14%;"></th>
         </tr>
     </thead>
@@ -27,6 +28,7 @@
                     <button type="button" data-id="{$item.id$}" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                     {% endif %}
                 </td>
+                <td>{$ item.sort_order $}</td>
                 <td>{$ item.created_date|date('Y-m-d H:i:s', -480, 'CCT') $}</td>
                 <td class="tag-operator" align="center">
                     <div class="btn-group btn-group-sm" role="group">
