@@ -10,11 +10,11 @@ var HISTORYSTART = 1, PAGESIZE = 5;
 $('#course_btn_add').click(function(){
     $('#course_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#course_modal_addLabel').html('添加课程');
+    $('#course_sort_order').val(500);
     _clear_form_course();
 });
 $('#course_modal_add').on('shown.bs.modal', function(){
     $('#course_title').focus();
-    $('#course_sort_order').val(500);
 });
 
 // clear form
