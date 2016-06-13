@@ -511,6 +511,7 @@ body{
 .footer{
     background-color: #333;
     color: #979797;
+    padding-bottom: 20px;
 }
 .footer .footer_content{
     width: 1050px;
@@ -532,11 +533,12 @@ body{
     color: #979797;
 }
 .footer .footer_content .footer_wechat{
-
+    text-align: center;
+    margin-left: 10px;
 }
 .footer .footer_content .footer_wechat img{
-    /*width: 120px;
-    height: 120px;*/
+    width: 140px;
+    height: 140px;
 }
 .footer .footer_content .company_contact{
     margin-bottom: 20px;

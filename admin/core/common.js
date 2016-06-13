@@ -10,6 +10,7 @@ exports.common = function (req, res, next) {
     var lang_json = require('../lang/' + lang +'.json')
     oData.lang = lang_json;
     oData.lang_value = lang;
+    oData.current_year = new Date().getFullYear();
     // get website title
     var sql = "SELECT * FROM `admin_config` WHERE type='BASIC_SITE_TITLE'";
     mysql.query(sql, [], function(result){

@@ -2,20 +2,20 @@
     <form id="req_form">
         <div class="col-xs-6">
             <div class="col-xs-5" style="margin-right:25px;">
-                <input type="text" id="req_name" name="req_name" class="form-control" placeholder="Name" style="margin-bottom:15px;">
-                <input type="email" id="req_email" name="req_email" class="form-control" placeholder="E-mail">
+                <input type="text" id="req_name" name="req_name" class="form-control" placeholder="{$ lang.msg_name $}" style="margin-bottom:15px;">
+                <input type="email" id="req_email" name="req_email" class="form-control" placeholder="{$ lang.msg_email $}">
             </div>
             <div class="col-xs-5">
-                <input type="text" id="req_phone" name="req_phone" class="form-control" placeholder="Phone" style="margin-bottom:15px;">
-                <input type="text" id="req_website" name="req_website" class="form-control" placeholder="Website">
+                <input type="text" id="req_phone" name="req_phone" class="form-control" placeholder="{$ lang.msg_phone $}" style="margin-bottom:15px;">
+                <input type="text" id="req_website" name="req_website" class="form-control" placeholder="{$ lang.msg_company $}">
             </div>
         </div>
         <div class="col-xs-6">
             <div class="col-xs-8">
-                <textarea id="req_req" name="req_req" class="form-control" rows="5" placeholder="您的需求"></textarea>
+                <textarea id="req_req" name="req_req" class="form-control" rows="5" placeholder="{$ lang.msg_needs $}"></textarea>
             </div>
             <div class="col-xs-4">
-                <button id="req_btn" class="msg_btn" type="button">提 交</button>
+                <button id="req_btn" class="msg_btn" type="button">{$ lang.msg_submit $}</button>
             </div>
         </div>
     </form>
