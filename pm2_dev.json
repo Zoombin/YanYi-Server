@@ -1,0 +1,9 @@
+[{
+  "name"        : "YanYi",
+  "script"      : "app.js",
+  "error_file"  : "./log_qa_error.log",
+  "out_file"    : "./log_qa_out.log",
+  "env": {
+      "NODE_ENV": "development"
+  }
+}]
