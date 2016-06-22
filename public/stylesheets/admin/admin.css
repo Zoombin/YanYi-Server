@@ -12,6 +12,11 @@
     margin-bottom: 0;
 }
 
+.td_content{
+    overflow-x: scroll;
+    overflow: hidden;
+}
+
 /*top 5 minus*/
 .margint5m {
     margin-top: -5px;
@@ -39,5 +44,5 @@
 }
 
 #course-list > table > tbody > tr > td{
-    vertical-align: middle;
+    /*vertical-align: middle;*/
 }

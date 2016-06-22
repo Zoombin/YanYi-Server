@@ -20,7 +20,7 @@
                 <td>{$ item.title $}</td>
                 <td>{$ item.subtitle $}</td>
                 <td> <img class="cover_img" src="{$ item.cover_url $}" alt="cover image"></td>
-                <td style="overflow-x:scroll;"><div style="height:40px;">{$ item.content|safe$}</div></td>
+                <td class="td_content"><div style="height:40px;">{$ item.content|safe$}</div></td>
                 <td class="tag-status">
                     {% if item.is_active == '1' %}
                     <button type="button" data-id="{$item.id$}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>

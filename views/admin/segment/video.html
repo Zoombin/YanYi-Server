@@ -27,7 +27,7 @@
                     <button type="button" data-id="{$item.id$}" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                     {% endif %}
                 </td>
-                <td style="overflow-x:scroll;">{$ item.wechat_url$}</td>
+                <td class="td_content">{$ item.wechat_url$}</td>
                 <td>{$ item.created_date|date('Y-m-d H:i:s', -480, 'CCT') $}</td>
                 <td>
                     {% if item.show_type == '1' %}
