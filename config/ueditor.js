@@ -26,6 +26,7 @@ module.exports = function (app) {
     app.use("/admin/stick/ue", ueditor(config.clientRoot, stick_editor));
     app.use("/admin/team/ue", ueditor(config.clientRoot, team_editor));
     app.use("/admin/event/ue", ueditor(config.clientRoot, event_editor));
+    app.use("/admin/service/ue", ueditor(config.clientRoot, service_editor));
     
 }
 
@@ -48,6 +49,10 @@ var team_editor = function(req, res, next){
 }
 var event_editor = function(req, res, next){
     var save_url = '/images/event/content';
+    _basic(req, res, next, save_url);
+}
+var service_editor = function(req, res, next){
+    var save_url = '/images/service/content';
     _basic(req, res, next, save_url);
 }
 

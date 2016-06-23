@@ -29,6 +29,9 @@ module.exports = function(app, passport) {
     app.get('/api/course/getall', core.course_getall);
     app.get('/course/:id?', core.course_renderone);
 
+    // service
+    app.get('/service/:id?', core.service_renderone);
+
     // activity
     app.get('/api/activity/getall', core.activity_getall);
     app.get('/activity/:id?', core.activity_renderone);
@@ -73,6 +76,10 @@ module.exports = function(app, passport) {
     app.post('/admin/course/add', admin.course_add);
     app.post('/admin/course/active', admin.course_active);
     app.post('/admin/course/remove', admin.course_remove);
+
+    // admin service
+    app.get('/admin/service/getall', admin.service_getall);
+    app.post('/admin/service/add', admin.service_add);
 
     // admin video
     app.get('/admin/video/getall', admin.video_getall);

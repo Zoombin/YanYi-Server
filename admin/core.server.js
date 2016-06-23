@@ -11,6 +11,9 @@ exports.banner_getall = require('./core/banner').getall;
 exports.course_getall = require('./core/course').getall;
 exports.course_renderone = require('./core/course').renderone;
 
+// service
+exports.service_renderone = require('./core/service').renderone;
+
 // activity
 exports.activity_getall = require('./core/activity').getall;
 exports.activity_renderone = require('./core/activity').renderone;

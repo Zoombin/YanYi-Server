@@ -18,6 +18,10 @@ exports.course_add = require('./api/course').add;
 exports.course_active = require('./api/course').active;
 exports.course_remove = require('./api/course').remove;
 
+// admin service
+exports.service_getall = require('./api/service').getall;
+exports.service_add = require('./api/service').add;
+
 // admin video
 exports.video_getall = require('./api/video').getall;
 exports.video_add = require('./api/video').add;

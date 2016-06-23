@@ -156,7 +156,7 @@ body{
 /*service start*/
 .service{
 }
-.service .service_title{
+.service .service_title a{
     font-family: "Open Sans Light";
     color: #ce7540;
     font-size: 24px;
