@@ -11,3 +11,27 @@
         NO DATA!
     {% endif %}
 </div>
+
+<!-- {#
+<div>
+    {% if list.length %}
+        {% for item in list %}
+        <div class="col-xs-4 activitybox">
+            <div class="col-xs-5 activity_img">
+                <a href="/stick/{$ item.id $}" target="_blank"><img src="{$ item.cover_url $}"></a>
+            </div>
+            <div class="col-xs-7 activity_intro">
+                <div class="activity_title">
+                    <a href="/stick/{$ item.id $}" target="_blank">{$ item.title $}</a>
+                </div>
+                <div class="activity_date text-muted">
+                    {$ item.created_date|date('Y-m-d H:i:s', -480, 'CCT') $}
+                </div>
+                
+            </div>
+        </div>
+        {% endfor%}
+    {% else %}
+        NO DATA!
+    {% endif %}
+</div>#} -->

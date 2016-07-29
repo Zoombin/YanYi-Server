@@ -30,7 +30,7 @@
 </div>
 
 <!-- 服务 -->
-<div class="box">
+<div class="box" id="anchor_service" name="anchor_service">
     <div class="container-fluid">
         <h3>{$lang.ourservice$}</h3>
     </div>
@@ -78,8 +78,8 @@
     </div> #}-->
 </div>
 
-<!-- 精彩活动 -->
-<div class="box">
+<!-- 最新活动 -->
+<!-- {#<div class="box" id="anchor_activity" name="anchor_activity">
     <div class="container-fluid">
         <h3>{$lang.upcomingactivity$}</h3>
         <div class="grayline"></div>
@@ -88,13 +88,13 @@
 <div class="box">
     <div class="container-fluid">
         <div id="index_activity" class="activity">
-            <!-- {# include "./lib/activity.html" #} -->
+            {% include "./lib/activity.html" %}
         </div>
     </div>
-</div>
+</div>#} -->
 
 <!-- 原创热贴 -->
-<div class="box">
+<div class="box" id="anchor_stick" name="anchor_stick">
     <div class="container-fluid">
         <h3>{$lang.stick$}</h3>
         <div class="grayline"></div>
@@ -109,7 +109,7 @@
 </div>
 
 <!-- 金牌讲师 -->
-<div class="box">
+<div class="box" id="anchor_team" name="anchor_team">
     <div class="container-fluid">
         <div class="grayline_dash"></div>
         <h3>{$lang.yanyiteam$}</h3>

@@ -11,6 +11,7 @@ exports.getpage = function(req, res, next){
     if(!lang) lang = 'zh_cn';
     var lang = require('../lang/' + lang +'.json')
     oData.lang = lang;
+    oData.current_year = new Date().getFullYear();
     // get website title
     var sql = "SELECT * FROM `admin_config` WHERE type='BASIC_SITE_TITLE'";
     mysql.query(sql, [], function(result){

@@ -8,10 +8,32 @@ $('#nav_anchor_course').unbind('click').click(function(){
     _highlightNav(this);
     $('html,body').animate({scrollTop: $("#anchor_course").offset().top - topOffSet}, 500);
 });
+
+$('#nav_anchor_service').unbind('click').click(function(){
+    _highlightNav(this);
+    $('html,body').animate({scrollTop: $("#anchor_service").offset().top - topOffSet}, 500);
+});
+
 $('#nav_anchor_video').unbind('click').click(function(){
     _highlightNav(this);
     $('html,body').animate({scrollTop: $("#anchor_video").offset().top - topOffSet}, 500);
 });
+
+$('#nav_anchor_activity').unbind('click').click(function(){
+    _highlightNav(this);
+    $('html,body').animate({scrollTop: $("#anchor_activity").offset().top - topOffSet}, 500);
+});
+
+$('#nav_anchor_stick').unbind('click').click(function(){
+    _highlightNav(this);
+    $('html,body').animate({scrollTop: $("#anchor_stick").offset().top - topOffSet}, 500);
+});
+
+$('#nav_anchor_team').unbind('click').click(function(){
+    _highlightNav(this);
+    $('html,body').animate({scrollTop: $("#anchor_team").offset().top - topOffSet}, 500);
+});
+
 $('#nav_anchor_contactus').unbind('click').click(function(){
     _highlightNav(this);
     $('html,body').animate({scrollTop: $("#anchor_contactus").offset().top - topOffSet}, 500);
@@ -138,7 +160,7 @@ function getActivity(){
         }
     });
 }
-getActivity();
+// getActivity();
 
 // stick
 function getStick(){
