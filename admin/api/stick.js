@@ -31,33 +31,96 @@ exports.getall = function (req, res, next) {
 exports.add = function(req, res, next){
     var id = req.param('id');
     var sTitle = req.param('title');
+    var sUrl = req.param('cover_url');
     var sContent = req.param('content');
     var lang = req.param('lang');
     if(!sTitle){
         aRes.error = 1;
-        aRes.msg = '请输入活动名称';
+        aRes.msg = '请输入帖子名称';
+        return res.send(aRes);
+    }
+    if(!(req.files && req.files.cover_url != 'undifined') && !id){
+        aRes.error = 1;
+        aRes.msg = '请上传帖子封面';
         return res.send(aRes);
     }
     if(!sContent){
         aRes.error = 1;
-        aRes.msg = '请输入活动内容';
+        aRes.msg = '请输入帖子内容';
         return res.send(aRes);
     }
 
-    if(id){
+    if(req.files && req.files.cover_url != 'undifined'){
+        // upload cover image
+        var size = req.files.cover_url.size;
+        var tmp_path = req.files.cover_url.path;
+        var filename = req.files.cover_url.name;
+        var ext = path.extname(filename);
+        var newFilename = (new Date() - 0) + ext;
+        var cover_url = '/images/stick/cover/' + newFilename;
+        // var target_path = config.clientRoot + cover_url;
+        var target_path = './public' + cover_url;
+        // 2M
+        if(size > 2000000){
+            aRes.error = 1;
+            aRes.msg = '图片过大';
+            fs.unlink(tmp_path);
+            return res.send(aRes);
+        }
+        if(image_type.indexOf(ext) == '-1'){
+            aRes.error = 1;
+            aRes.msg = '图片类型不合法';
+            fs.unlink(tmp_path);
+            return res.send(aRes);
+        }
+        // 移动到相应目录
+        fs.readFile(tmp_path, function(err, data){
+            fs.writeFile(target_path, data, function(err){
+                if(err){
+                    console.log(err);
+                    aRes.error = 1;
+                    aRes.msg = '上传图片出错, 请联系系统管理员';
+                    fs.unlink(tmp_path);
+                    return res.send(aRes);
+                }
+                // 移动成功后 删除临时文件
+                fs.unlinkSync(tmp_path);
+
+                if(id){
+                    // 更新
+                    var sql = "SELECT * FROM `admin_stick` WHERE id=?";
+                    mysql.query(sql, [id], function(result){
+                        var tmp_url = result.data[0].cover_url;
+                        if(tmp_url){
+                            var file_path = config.clientRoot+tmp_url;
+                            if(fs.existsSync(file_path)){
+                                fs.unlinkSync(file_path);
+                            }
+                        }
+                        // update record
+                        var sql = 'UPDATE admin_stick SET title=?,cover_url=?,`content`=?,updated_date=NOW() WHERE id=?';
+                        mysql.query(sql, [sTitle,cover_url,sContent, id], function(result){
+                            return res.send(result);
+                        });
+                    });
+                }else{
+                    // 添加
+                    var sql = 'INSERT INTO admin_stick SET title=?, cover_url=?,`content`=?, lang=?, created_date=NOW()';
+                    mysql.query(sql, [sTitle, cover_url, sContent, lang], function(result){
+                        return res.send(result);
+                    });
+                }
+            });
+        });
+        
+    }else{
+        // 更新时,没有上传封面图片
         // update record
         var sql = 'UPDATE admin_stick SET title=?,`content`=?,updated_date=NOW() WHERE id=?';
         mysql.query(sql, [sTitle,sContent, id], function(result){
             return res.send(result);
         });
-    }else{
-        // 添加
-        var sql = 'INSERT INTO admin_stick SET title=?,`content`=?,lang=?,created_date=NOW()';
-        mysql.query(sql, [sTitle,sContent,lang], function(result){
-            return res.send(result);
-        });
     }
-    
 }
 
 exports.active = function(req, res, next){

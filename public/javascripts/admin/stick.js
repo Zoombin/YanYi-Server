@@ -19,6 +19,7 @@ $('#stick_modal_add').on('shown.bs.modal', function(){
 // clear form
 function _clear_form_stick(){
     $('#stick_title').val('');
+    $('#stick_cover_url').val('');
     ueContent_stick.ready(function() {
         ueContent_stick.setContent('');
     });
@@ -29,9 +30,14 @@ function _clear_form_stick(){
 $('#stick_save').click(function(e){
     var id = $('#stick_title').attr('data-id');
     var sTitle = $('#stick_title').val().trim();
+    var sCoverUrl = $('#stick_cover_url').val();
     var sContent = ueContent_stick.getContent();
     if(!sTitle) {
         $.bstip('请输入帖子标题', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
+        return false;
+    }
+    if(!sCoverUrl && !id) {
+        $.bstip('请上传帖子封面', {type: 'danger', align: 'center', width: 'auto', offset:{from: 'top', amount: 30}});
         return false;
     }
     if(!sContent) {

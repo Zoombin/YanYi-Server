@@ -26,7 +26,7 @@
 }
 
 #course .cover_img, #course_modal_add .cover_img, #video .cover_img, #video_modal_add .cover_img,
-#activity .cover_img, #activity_modal_add .cover_img{
+#activity .cover_img, #activity_modal_add .cover_img,#stick .cover_img, #stick_modal_add .cover_img{
     width:120px;
     height: 60px;
 }
