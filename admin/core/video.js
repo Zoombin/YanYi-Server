@@ -18,7 +18,7 @@ exports.getall = function (req, res, next) {
             aExistId.push(t.id);
         };
         // get middle video
-        var sql = "SELECT * FROM `admin_video` WHERE is_active=1 AND show_type=2 AND lang=? ORDER BY id DESC LIMIT 2 ";
+        var sql = "SELECT * FROM `admin_video` WHERE is_active=1 AND show_type=2 AND lang=? ORDER BY id DESC LIMIT 4 ";
         mysql.query(sql, [lang], function(result){
             oData.video2 = result.data;
             for (var i = 0; i < result.data.length; i++) {
@@ -29,10 +29,10 @@ exports.getall = function (req, res, next) {
             var sql = "SELECT * FROM `admin_video` WHERE is_active=1 AND show_type=1 AND lang=? ORDER BY id DESC LIMIT 6 ";
             mysql.query(sql, [lang], function(result){
                 oData.video1 = result.data;
-                for (var i = 0; i < result.data.length; i++) {
-                    var t = result.data[i];
-                    aExistId.push(t.id);
-                };
+                // for (var i = 0; i < result.data.length; i++) {
+                //     var t = result.data[i];
+                //     aExistId.push(t.id);
+                // };
                 // get video list
                 var sql = "SELECT * FROM `admin_video` WHERE is_active=1 AND lang=? AND id NOT IN (?) ORDER BY id DESC LIMIT ?,? ";
                 mysql.query(sql, [lang, aExistId, iStart*iPagesize, iPagesize*1], function(result){
