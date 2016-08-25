@@ -42,4 +42,8 @@ if ('wesley' == app.get('env')) {
   app.set('json spaces', 2);
 }
 
+if ('production' == app.get('env')) {
+  config.mysql.password = 'YanYi123';
+}
+
 module.exports = config;

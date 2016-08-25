@@ -1,0 +1,9 @@
+[{
+  "name"        : "YanYi_PROD",
+  "script"      : "app.js",
+  "error_file"  : "./log_pro_error.log",
+  "out_file"    : "./log_pro_out.log",
+  "env": {
+      "NODE_ENV": "production"
+  }
+}]
