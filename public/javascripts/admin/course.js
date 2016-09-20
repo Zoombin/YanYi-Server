@@ -34,8 +34,8 @@ $('#course_btn_add').click(function(){
     });
 });
 $('#course_modal_add').on('shown.bs.modal', function(){
-    // autosave 30s
-    timer_course = window.setInterval(_course_autosave, 30000);
+    // autosave 60s
+    timer_course = window.setInterval(_course_autosave, 60000);
 
     $('#course_title').focus();
 });
