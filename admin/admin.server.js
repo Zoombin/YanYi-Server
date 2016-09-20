@@ -13,6 +13,7 @@ exports.banner_active = require('./api/banner').active;
 exports.banner_remove = require('./api/banner').remove;
 
 // admin course
+exports.course_draft = require('./api/course').draft;
 exports.course_getall = require('./api/course').getall;
 exports.course_add = require('./api/course').add;
 exports.course_active = require('./api/course').active;

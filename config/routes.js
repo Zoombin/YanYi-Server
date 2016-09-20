@@ -72,6 +72,7 @@ module.exports = function(app, passport) {
     app.post('/admin/banner/remove', admin.banner_remove);
 
     // admin course
+    app.get('/admin/course/draft', admin.course_draft);
     app.get('/admin/course/getall', admin.course_getall);
     app.post('/admin/course/add', admin.course_add);
     app.post('/admin/course/active', admin.course_active);

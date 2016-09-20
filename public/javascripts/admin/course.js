@@ -4,7 +4,7 @@ ueContent_course = UE.getEditor('course_content', {
     serverUrl: '/admin/course/ue'
 });
 // for pagination
-var HISTORYSTART = 1, PAGESIZE = 5;
+var HISTORYSTART = 1, PAGESIZE = 5, timer_course;
 
 // show add modal when lick
 $('#course_btn_add').click(function(){
@@ -12,10 +12,61 @@ $('#course_btn_add').click(function(){
     $('#course_modal_addLabel').html('添加课程');
     $('#course_sort_order').val(500);
     _clear_form_course();
+    // init draft
+    $.ajax({
+        type : 'GET',
+        url: '/admin/course/draft',
+        data: {lang: VAR_LANG_COURSE},
+        success: function(res) {
+            if(res.data.id){
+                $('#course_title').attr('data-id', res.data.id).val(res.data.title);
+                $('#course_sort_order').val(res.data.sort_order);
+                if(res.data.cover_url)
+                    $('#course_cover_image').show().attr('src',res.data.cover_url);
+                ueContent_course.ready(function() {
+                    ueContent_course.setContent(res.data.content);
+                });
+            }
+        },
+        error: function(a, b, c) {
+            $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000});
+        }
+    });
 });
 $('#course_modal_add').on('shown.bs.modal', function(){
+    // autosave 30s
+    timer_course = window.setInterval(_course_autosave, 30000);
+
     $('#course_title').focus();
 });
+$('#course_modal_add').on('hide.bs.modal', function(){
+    // destroy timer
+    window.clearInterval(timer_course);
+});
+// auto save
+function _course_autosave(){
+    var id = $('#course_title').attr('data-id');
+
+    $('#course_modal_add button').attr('disabled', 'disabled');
+    $('#course_form').ajaxSubmit({
+        url: '/admin/course/add',
+        type: 'post',
+        data:{id:id, lang: VAR_LANG_COURSE, is_draft: 1},
+        success: function(res) {
+            $.bstip('保存成功', {type: 'success'});
+            $('#course_modal_add button').removeAttr('disabled');
+            
+            var id= res.data.id;
+            $('#course_title').attr('data-id', id);
+            if(res.data.cover_url){
+                $('#course_cover_image').show().attr('src',res.data.cover_url);
+            }
+        },
+        error: function(a, b, c) {
+            $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000, width: 'auto'});
+        }
+    });
+}
 
 // clear form
 function _clear_form_course(){
@@ -64,7 +115,7 @@ $('#course_save').click(function(e){
     $('#course_form').ajaxSubmit({
         url: '/admin/course/add',
         type: 'post',
-        data:{id:id, lang: VAR_LANG_COURSE},
+        data:{id:id, lang: VAR_LANG_COURSE, is_draft: 0},
         success: function(res) {
             $.bstip(res.msg, {type: 'success'});
             getall(HISTORYSTART-1);

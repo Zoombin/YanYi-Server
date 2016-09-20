@@ -7,7 +7,7 @@ exports.getall = function (req, res, next) {
     var iPagesize = req.param('PAGESIZE');
     var lang = req.param('lang');
 
-    var sql = "SELECT id,title,is_active,cover_url,content,created_date FROM `admin_course` WHERE is_active=1 AND lang=? ORDER BY sort_order DESC,id DESC ";
+    var sql = "SELECT id,title,is_active,cover_url,content,created_date FROM `admin_course` WHERE is_active=1 AND lang=? AND is_draft=0 ORDER BY sort_order DESC,id DESC ";
 
     var cnt = "SELECT COUNT(*) AS cnt FROM (" + sql + ") t";
     mysql.query(cnt, [lang], function(result){
