@@ -4,7 +4,8 @@ ueContent_course = UE.getEditor('course_content', {
     serverUrl: '/admin/course/ue'
 });
 // for pagination
-var HISTORYSTART = 1, PAGESIZE = 5, timer_course;
+var HISTORYSTART = 1, PAGESIZE = 5, TIMER_INTERVAL = 60000;
+var timer_course;
 
 // show add modal when lick
 $('#course_btn_add').click(function(){
@@ -35,13 +36,14 @@ $('#course_btn_add').click(function(){
 });
 $('#course_modal_add').on('shown.bs.modal', function(){
     // autosave 60s
-    timer_course = window.setInterval(_course_autosave, 60000);
+    timer_course = window.setInterval(_course_autosave, TIMER_INTERVAL);
 
     $('#course_title').focus();
 });
 $('#course_modal_add').on('hide.bs.modal', function(){
     // destroy timer
     window.clearInterval(timer_course);
+    getall(0);
 });
 // auto save
 function _course_autosave(){
