@@ -76,7 +76,7 @@ function getCourse(){
             $('#index_course').empty();
             $('#index_course').append(res.tpl);
 
-            $("#course").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:false,vis:2});
+            $("#course").slide({titCell:".hd .picList",mainCell:".bd .picList",autoPage:true,effect:"leftLoop",autoPlay:false,vis:2});
         },
         error: function(a, b, c) {
             $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000});
@@ -191,7 +191,7 @@ function getTeam(){
             $('#index_team').empty();
             $('#index_team').append(res.tpl);
 
-            $("#lectuer").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:false,vis:4});
+            $("#lectuer").slide({titCell:".hd .lecture-class-unique",mainCell:".bd .lecture-class-unique",autoPage:true,effect:"leftLoop",autoPlay:false,vis:4});
         },
         error: function(a, b, c) {
             $.bstip('服务器错误，请与管理员联系！', {type: 'danger', delay: 4000});
