@@ -90,10 +90,12 @@ function _deletestick(id, oTr){
 // update, init data
 function _updatestick(id, oTr){
     var sTitle =  $(oTr).find('td:eq(1)').html();
-    var sContent = $(oTr).find('td:eq(2) div').html();
+    var sContent = $(oTr).find('.td_content').html();
+    var sCoverUrl = $(oTr).find('td:eq(2) img').attr('src');
     $('#stick_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#stick_modal_addLabel').html('编辑帖子');
     $('#stick_title').attr('data-id', id).val(sTitle);
+    $('#stick_cover_image').show().attr('src',sCoverUrl);
     ueContent_stick.ready(function() {
         ueContent_stick.setContent(sContent);
     });
