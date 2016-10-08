@@ -186,7 +186,7 @@ function getTeam(){
     $.ajax({
         type : 'GET',
         url: '/api/team/getall',
-        data: {PAGESIZE: PAGESIZE, START: START, lang: lang},
+        data: {PAGESIZE: 9999, START: START, lang: lang},
         success: function(res) {
             $('#index_team').empty();
             $('#index_team').append(res.tpl);
