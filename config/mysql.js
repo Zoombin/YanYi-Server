@@ -8,7 +8,8 @@ var db_config = {
   user: config.mysql.user,
   password: config.mysql.password,
   port: config.mysql.port,
-  database: config.mysql.database
+  database: config.mysql.database,
+  dateStrings: true
 }
 
 var pool = null;

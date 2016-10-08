@@ -23,18 +23,19 @@ exports.getpage = function(req, res, next){
 
 exports.getall = function (req, res, next) {
     var sStartDate = req.param('start_date');
-    var sEndDate = req.param('end_date');
+    var sCurDate = req.param('cur_date');
 
-    var sql = "SELECT * FROM `admin_event` WHERE event_date BETWEEN ? AND ? ORDER BY event_date DESC";
+    // var sql = "SELECT * FROM `admin_event` WHERE event_date BETWEEN ? AND ? ORDER BY event_date DESC";
+    var sql = "SELECT * FROM `admin_event` WHERE event_date >= ? ORDER BY event_date DESC";
 
-    var cnt = "SELECT COUNT(*) AS cnt FROM (" + sql + ") t";
-    mysql.query(cnt, [sStartDate,sEndDate], function(result){
-        var totalCount = result.data[0].cnt;
-
-        mysql.query(sql, [sStartDate,sEndDate], function(result){
+    // 获取今年所有的活动
+    mysql.query(sql, [sStartDate/*,sCurDate*/], function(result){
+        var curYearData = result.data;
+        // 只显示未来的活动
+        mysql.query(sql, [/*sStartDate,*/sCurDate], function(result){
             var tpl = swig.renderFile('views/segment/event.html', {list: result.data});
             result.tpl = tpl;
-            result.totalCount = totalCount;
+            result.curYearData = curYearData;
             return res.send(result);
         });
     });
