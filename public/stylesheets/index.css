@@ -201,7 +201,7 @@ body{
 }
 .video .videobox .img_big{
     width: 97%;
-    height: 379px;
+    height: 399px;
 }
 .video .videobox .img_mid{
     width: 97%;
@@ -218,6 +218,8 @@ body{
 .video .videobox .video_text{
     color: #333;
     margin-bottom: 8px;
+    height: 40px;
+    overflow: hidden;
 }
 
 .video .videobox .videolistbox{
