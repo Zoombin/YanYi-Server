@@ -43,8 +43,9 @@ if ('wesley' == app.get('env')) {
 }
 
 if ('production' == app.get('env')) {
-  config.mysql.host = '120.25.98.129';
-  config.mysql.password = 'YanYi123';
+    config.mysql.host = '120.25.98.129';
+    config.mysql.password = 'YanYi123';
+    config.port=80;
 }
 
 module.exports = config;

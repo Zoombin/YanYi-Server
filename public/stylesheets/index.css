@@ -194,7 +194,7 @@ body{
     background-color: #F6F5F4;
 }
 .video .videobox{
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 .video .videobox a{
     text-decoration: none;
@@ -223,12 +223,12 @@ body{
 }
 
 .video .videobox .videolistbox{
-    margin-bottom: 8px;
+    /*margin-bottom: 8px;*/
 }
 
 .video .video_list {
-    margin-top: 20px;
-    margin-bottom: 30px;
+    /*margin-top: 20px;*/
+    /*margin-bottom: 30px;*/
 }
 .video .video_list .video_ul{
     -webkit-padding-start : 20px;
@@ -328,7 +328,9 @@ body{
 }
 .activity .activitybox{
     margin-bottom: 10px;
+    height: 100px;
 }
+
 .activity .activitybox .activity_img img{
     width: 100%;
     height: 80px;
@@ -458,7 +460,14 @@ body{
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    color: white;
 }
+
+.lectuerlist .bd ul li .pic .columntext .columncontent p span{
+    color: white;
+}
+
+
 .lectuerlist .bd ul li .pic .columntext{
     bottom:-100%;
     width:inherit;

@@ -26,7 +26,7 @@ exports.getall = function (req, res, next) {
     var sCurDate = req.param('cur_date');
 
     // var sql = "SELECT * FROM `admin_event` WHERE event_date BETWEEN ? AND ? ORDER BY event_date DESC";
-    var sql = "SELECT * FROM `admin_event` WHERE event_date >= ? ORDER BY event_date DESC";
+    var sql = "SELECT * FROM `admin_event` WHERE event_date >= ? ORDER BY event_date";
 
     // 获取今年所有的活动
     mysql.query(sql, [sStartDate/*,sCurDate*/], function(result){

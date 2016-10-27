@@ -15,6 +15,29 @@ exports.getall = function (req, res, next) {
 
         sql += " LIMIT ?,?";
         mysql.query(sql, [lang, iStart*iPagesize, iPagesize*1], function(result){
+            for(var i=0;i<result.data.length;i++){
+                var ssName ="";
+                var name =result.data[i].name;
+                console.log(name);
+                name.replace(" ","&nbsp;");
+                console.log(name);
+                var sName = name.split("\n");
+                for(var j=0;j<sName.length;j++){
+                    if(j==0){
+                        ssName+= '<p style="font-size:14px;">'+sName[j]+'</p><p style="font-size:12px;">';
+                    }
+                    else if(j==(sName.length-1)){
+                        ssName+= sName[j]+'</p>';
+                    }
+                    else{
+                        ssName+= sName[j]+'</p><p style="font-size:12px;">';
+                    }
+
+                }
+                result.data[i].name=ssName;
+                console.log(sName);
+                console.log(ssName);
+            }
             var tpl = swig.renderFile('views/segment/team.html', {list: result.data});
             result.tpl = tpl;
             result.totalCount = totalCount;
