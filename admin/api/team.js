@@ -12,7 +12,7 @@ exports.getall = function (req, res, next) {
     var iPagesize = req.param('PAGESIZE');
     var lang = req.param('lang');
 
-    var sql = "SELECT * FROM `admin_team` WHERE lang=? ORDER BY id DESC ";
+    var sql = "SELECT * FROM `admin_team` WHERE lang=? ORDER BY sort_order DESC ";
 
     var cnt = "SELECT COUNT(*) AS cnt FROM (" + sql + ") t";
     mysql.query(cnt, [lang], function(result){
@@ -34,6 +34,8 @@ exports.add = function(req, res, next){
     var sBrief = req.param('brief');
     var sUrl = req.param('cover_url');
     var lang = req.param('lang');
+    var sort_order = parseInt(req.param('team_sort_order'));
+
     if(!sTitle){
         aRes.error = 1;
         aRes.msg = '请输入姓名';
@@ -48,6 +50,9 @@ exports.add = function(req, res, next){
         aRes.error = 1;
         aRes.msg = '请上传讲师封面';
         return res.send(aRes);
+    }
+    if(!sort_order){
+       sort_order=500;
     }
 
     if(req.files && req.files.cover_url != 'undifined'){
@@ -98,15 +103,15 @@ exports.add = function(req, res, next){
                             }
                         }
                         // update record
-                        var sql = 'UPDATE admin_team SET name=?,cover_url=?,brief=?,updated_date=NOW() WHERE id=?';
-                        mysql.query(sql, [sTitle,cover_url,sBrief, id], function(result){
+                        var sql = 'UPDATE admin_team SET name=?,cover_url=?,brief=?,sort_order=?,updated_date=NOW() WHERE id=?';
+                        mysql.query(sql, [sTitle,cover_url,sBrief, sort_order, id ], function(result){
                             return res.send(result);
                         });
                     });
                 }else{
                     // 添加
-                    var sql = 'INSERT INTO admin_team SET name=?,cover_url=?,brief=?,lang=?,created_date=NOW()';
-                    mysql.query(sql, [sTitle,cover_url,sBrief,lang], function(result){
+                    var sql = 'INSERT INTO admin_team SET name=?,cover_url=?,brief=?,lang=?,sort_order=?,created_date=NOW()';
+                    mysql.query(sql, [sTitle,cover_url,sBrief,lang,sort_order], function(result){
                         return res.send(result);
                     });
                 }
@@ -116,8 +121,8 @@ exports.add = function(req, res, next){
     }else{
         // 更新时,没有上传封面图片
         // update record
-        var sql = 'UPDATE admin_team SET name=?,brief=?,updated_date=NOW() WHERE id=?';
-        mysql.query(sql, [sTitle,sBrief, id], function(result){
+        var sql = 'UPDATE admin_team SET name=?,brief=?,sort_order=?,updated_date=NOW() WHERE id=?';
+        mysql.query(sql, [sTitle,sBrief,sort_order, id], function(result){
             return res.send(result);
         });
     }

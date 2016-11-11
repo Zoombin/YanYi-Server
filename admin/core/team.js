@@ -7,7 +7,7 @@ exports.getall = function (req, res, next) {
     var iPagesize = req.param('PAGESIZE');
     var lang = req.param('lang');
 
-    var sql = "SELECT * FROM `admin_team` WHERE is_active=1 AND lang=? ORDER BY id DESC ";
+    var sql = "SELECT * FROM `admin_team` WHERE is_active=1 AND lang=? ORDER BY sort_order DESC ";
 
     var cnt = "SELECT COUNT(*) AS cnt FROM (" + sql + ") t";
     mysql.query(cnt, [lang], function(result){
@@ -18,9 +18,9 @@ exports.getall = function (req, res, next) {
             for(var i=0;i<result.data.length;i++){
                 var ssName ="";
                 var name =result.data[i].name;
-                console.log(name);
+
                 name.replace(" ","&nbsp;");
-                console.log(name);
+
                 var sName = name.split("\n");
                 for(var j=0;j<sName.length;j++){
                     if(j==0){
@@ -35,8 +35,6 @@ exports.getall = function (req, res, next) {
 
                 }
                 result.data[i].name=ssName;
-                console.log(sName);
-                console.log(ssName);
             }
             var tpl = swig.renderFile('views/segment/team.html', {list: result.data});
             result.tpl = tpl;

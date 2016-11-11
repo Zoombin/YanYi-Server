@@ -21,6 +21,7 @@ function _clear_form_team(){
     $('#team_title').val('');
     $('#team_cover_url').val('');
     // $('#team_brief').val('');
+    $('#team_sort_order').val('');
     ueContent_brief.ready(function() {
         ueContent_brief.setContent('');
     });
@@ -95,10 +96,12 @@ function _updateteam(id, oTr){
     var sTitle =  $(oTr).find('td:eq(1)').html();
     var sBrief = $(oTr).find('td:eq(3) div').html();
     var sCoverUrl = $(oTr).find('td:eq(2) img').attr('src');
+    var sSort_order = $(oTr).find('td:eq(5)').html();
     $('#team_modal_add').modal({show: true, keyboard: false, backdrop: 'static'});
     $('#team_modal_addLabel').html('编辑讲师');
     $('#team_title').attr('data-id', id).val(sTitle);
     $('#team_cover_image').show().attr('src',sCoverUrl);
+    $('#team_sort_order').val(sSort_order);
     // $('#team_brief').val(sBrief);
     ueContent_brief.ready(function() {
         ueContent_brief.setContent(sBrief);

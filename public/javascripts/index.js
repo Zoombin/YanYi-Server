@@ -1,4 +1,4 @@
-// 课程/活动等 读取的个数读取的个数
+// 活动等 读取的个数读取的个数
 var PAGESIZE=6, START=0;
 var lang = $('#lang_value').html();
 
@@ -71,7 +71,7 @@ function getCourse(){
     $.ajax({
         type : 'GET',
         url: '/api/course/getall',
-        data: {PAGESIZE: PAGESIZE, START: START, lang: lang},
+        data: {lang: lang},
         success: function(res) {
             $('#index_course').empty();
             $('#index_course').append(res.tpl);
