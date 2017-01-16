@@ -3,6 +3,7 @@ exports.common = require('./core/common').common;
 // event
 exports.events = require('./core/events').getpage;
 exports.event_getall = require('./core/events').getall;
+exports.event_info = require('./core/events').event_info;
 
 // banner
 exports.banner_getall = require('./core/banner').getall;

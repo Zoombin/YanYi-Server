@@ -21,6 +21,8 @@ module.exports = function(app, passport) {
     // event
     app.get('/event', core.events);
     app.get('/api/event/getall', core.event_getall);
+    //给客户提供的接口
+    app.get('/api/event/event_info', core.event_info);
 
     // banner
     app.get('/api/banner/getall', core.banner_getall);

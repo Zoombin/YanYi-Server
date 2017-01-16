@@ -58,3 +58,46 @@ exports.renderone = function(req, res, next){
         });
     });
 }
+
+
+//额外提供的接口客户
+exports.event_info = function (req, res, next) {
+    var aRes = {error:0, msg:'',data:{}};
+    var param=[];
+    var sStartDate = req.param('start_date');
+    var id = req.param('id');
+
+    if(!sStartDate){
+        aRes.error=1;
+        aRes.msg="请输入开始时间";
+        return res.send(aRes);
+    }
+
+    var sql = "SELECT * FROM `admin_event` WHERE event_date >= ?";
+    param.push(sStartDate);
+    if(id){
+        sql += " AND id=? ";
+        param.push(id);
+    }
+    sql += "ORDER BY event_date";
+
+
+    mysql.query(sql, param, function(result){
+        if(result.data.length){
+            if(id){
+                aRes.data=result.data[0];
+            }
+            else{
+                aRes.data=result.data;
+            }
+        }
+        else{
+            aRes.error=1;
+            aRes.msg="该活动不存在";
+        }
+        return res.send(aRes);
+    });
+
+
+
+};
